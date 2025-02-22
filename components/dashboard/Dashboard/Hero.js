@@ -7,9 +7,11 @@ const Hero = () => {
   return (
     <Section>
         <Container>
-            <Header1>Why not search for</Header1>
-            <Header3>for that will last you </Header3>
+            <Header1>Why not search </Header1>
+            <Header2> for something </Header2>
+            <Header3>that will last you </Header3>
             <Header4> Forever</Header4>
+            <Image src="/images/images.jpeg" alt="hello" />
             <SearchBar></SearchBar>
 
         </Container>
@@ -95,8 +97,8 @@ const CTAButton = styled.button`
 
 const Image = styled.img`
   margin-top: 10px;
-  width: 400px; 
-  height:400px;
+  width: 372px; 
+  height:200px;
   border-radius: 10px; /* Optional for styling */
   margin-bottom: 30px;
 `;

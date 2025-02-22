@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Home from './Home';
 import LoginButton from './LoginButton';
 import SignUpButton from './SignUpButton';
-import ShoppingCart from '../ShoppingCart';
+import ShoppingCart from './ShoppingCart';
 const Navbar = () => {
   //const { setUser } = useStateContext()
 
@@ -18,6 +18,10 @@ const Navbar = () => {
          <About>About</About>
          <Contact> Contact</Contact>
          <ShoppingCart></ShoppingCart>
+         <Buttons>
+        <LoginButton></LoginButton>
+        <SignUpButton></SignUpButton>
+        </Buttons>
       </Right_Items>
     </Nav>
   );
@@ -37,7 +41,7 @@ const About = styled.div`
 `;
 const Right_Items = styled.div`
       display:flex;
-      width: 25%;
+      width: 35%;
       justify-content: space-between;
       align-items: center;
       height: 50px;
@@ -58,8 +62,8 @@ const Nav = styled.nav`
     height: 100px;
     position: sticky;
     top: 0;
-    overflow: hidden;
-    background-color: transparent;
+    background: white;
+    z-index:1000;
 `;
 const Logo = styled.div`
     margin-left:20px;
