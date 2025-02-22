@@ -6,4 +6,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; // ✅ Correct for .js
+module.exports = nextConfig; 
