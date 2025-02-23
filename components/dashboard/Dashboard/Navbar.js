@@ -12,27 +12,38 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Logo>Perreno </Logo>
+      <Logo href="/">Perreno </Logo>
       <Right_Items>
         <Home></Home>
-         <About>About</About>
-         <Contact> Contact</Contact>
+        <About href="/about">About</About>
+        <Contact  href="/contact"> Contact</Contact>
          <ShoppingCart></ShoppingCart>
       </Right_Items>
     </Nav>
   );
 };
 
-const Contact = styled.div`
+const Contact = styled(Link)`
     display:flex;
     font-size: 16px;
     font-weight: 600;
+    text-decoration:none;
+    color:black;
+    &:hover {
+    color: red;
+  }
 
 `;
-const About = styled.div`
+const About = styled(Link)`
     display:flex;
     font-size: 16px;
     font-weight: 600;
+    text-decoration:none;
+    color:black;
+
+    &:hover {
+    color: red;
+  }
 
 `;
 const Right_Items = styled.div`
@@ -61,7 +72,7 @@ const Nav = styled.nav`
     overflow: hidden;
     background-color: transparent;
 `;
-const Logo = styled.div`
+const Logo = styled(Link)`
     margin-left:20px;
     font-size: 35px;
     font-weight: 1000;

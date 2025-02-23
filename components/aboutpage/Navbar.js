@@ -12,11 +12,11 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Logo>Perreno </Logo>
+      <Logo href="/">Perreno </Logo>
       <Right_Items>
         <Home></Home>
-         <About>About</About>
-         <Contact> Contact</Contact>
+        <About href="/about">About</About>
+        <Contact  href="/contact"> Contact</Contact>
          <ShoppingCart></ShoppingCart>
          <Buttons>
         <LoginButton></LoginButton>
@@ -27,16 +27,27 @@ const Navbar = () => {
   );
 };
 
-const Contact = styled.div`
+const Contact = styled(Link)`
     display:flex;
     font-size: 16px;
     font-weight: 600;
+    text-decoration:none;
+    color:black;
+    &:hover {
+    color: red;
+  }
 
 `;
-const About = styled.div`
+const About = styled(Link)`
     display:flex;
     font-size: 16px;
     font-weight: 600;
+    text-decoration:none;
+    color:black;
+
+    &:hover {
+    color: red;
+  }
 
 `;
 const Right_Items = styled.div`
@@ -65,20 +76,11 @@ const Nav = styled.nav`
     background: white;
     z-index:1000;
 `;
-const Logo = styled.div`
+const Logo = styled(Link)`
     margin-left:20px;
     font-size: 35px;
     font-weight: 1000;
     text-decoration:none;
     color:black;
 `;
-// const Logo = styled(Link)`
-//     font-size: 25px;
-//     font-weight: 1000;
-//     text-decoration:none;
-//     color:black;
-// `;
-
-
-
 export default Navbar;
