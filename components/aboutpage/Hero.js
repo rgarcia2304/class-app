@@ -18,24 +18,30 @@ const Hero = () => {
         <Container2>
         <Headerabout>About Perreno</Headerabout>
         <Headeraboutcont> Here at Perrano we are commited to giving you the best product recommendations on pretty much everything.
-            We source our recommendations based on what real people think is the best.<Space> 
+            We source our recommendations based on what real people think is the best.
+            <Space> 
+            </Space>
+            <Space> 
+            </Space>
+            <Space> 
+            </Space>
+            <Space> 
             </Space>
              Now why are we doing this?
             We like many people are tired of buying things that break right away. 
-            <Space> 
-            </Space>
             When you buy quality items you can use them for a pretty long time. This in turn saves you money, and helps our earth one less item
             thrown in the trash at a time
-
+            <Space> 
+            </Space>
+            <Space> 
+            </Space>
+            <Space> 
+            </Space>
             <Space> 
             </Space>
             "The bitterness of poor quality remains long after the sweetness of low price is forgotten”. <Space></Space>- Benjamin Franklin 
-
         </Headeraboutcont>
-        
-
         </Container2>
-
     </Section>
 
   );
