@@ -8,19 +8,25 @@ const item_list = [
 ];
 const Hero = () => {
 
-  const [currentWord, setCurrentWord] = useState(item_list[0]); // Start with the first word
+  const [currentWord, setCurrentWord] = useState(item_list[0]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prevWord) => {
-        const currentIndex = item_list.indexOf(prevWord);
-        const nextIndex = (currentIndex + 1) % item_list.length;
-        return item_list[nextIndex];
-      });
-    },4000); 
+const cycleWords = async () => {
+  while (true) {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    setCurrentWord((prevWord) => {
+      const currentIndex = item_list.indexOf(prevWord);
+      const nextIndex = (currentIndex + 1) % item_list.length;
+      return item_list[nextIndex];
+    });
+  }
+};
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+// Start the cycle once
+useState(() => {
+  cycleWords();
+});
+
+
 
   return (
     <Section>
@@ -50,43 +56,42 @@ const Container = styled.div`
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    margin-top:50px;
 `;
 
 const Header1 = styled.h1`
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 40px;
     text-align:center;
-    
-    margin-bottom:10px;
+
+    margin-bottom:5px;
 
 `;
 const Header2 = styled.h1`
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 40px;
     text-align:center;
-    margin:10px 10px;
+    margin:5px 5px;
 
 `;
 const Header3 = styled.h1`
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 40px;
     text-align:center;
-    margin-top:10px;
-    margin-bottom: 20px;
+    margin-top:5px;
+    margin-bottom: 15px;
 
 `;
 const Header4 = styled.h1`
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 40px;
     text-align:center;
     margin-bottom:10px;
     margin-top:10px;

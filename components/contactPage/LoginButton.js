@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const LoginButton = () => {
   return (
-    <LoginButtons href="/auth/signup">
+    <LoginButtons href="/auth/login">
       Login
     </LoginButtons>
   );
