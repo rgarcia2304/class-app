@@ -4,12 +4,12 @@ import Link from 'next/link'
 //import { logOut } from '@/backend/Auth';
 //import { useStateContext } from '@/context/StateContext';
 import Home from './Home';
-import LoginButton from './LoginButton';
-import SignUpButton from './SignUpButton';
 import ShoppingCart from '../ShoppingCart';
-const Navbar = () => {
-  //const { setUser } = useStateContext()
+import LogOut from './Logout';
+import SignUpButton from './SignUpButton';
 
+//import { useStateContext } from '@/context/StateContext';
+const Navbar = () => {
   return (
     <Nav>
       <Logo href="/">Perreno </Logo>
@@ -18,9 +18,12 @@ const Navbar = () => {
         <About href="/about">About</About>
         <Contact  href="/contact"> Contact</Contact>
          <ShoppingCart></ShoppingCart>
+         <LogOut></LogOut>
+         
       </Right_Items>
     </Nav>
-  );
+    );
+
 };
 
 const Contact = styled(Link)`

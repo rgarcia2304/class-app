@@ -8,19 +8,15 @@ import LandingBar from '@/components/landingpage/LandingPage/LandingBar'
 import { auth } from '@/backend/Firebase'
 
 const Login = () => {
-
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter()
 
     const onSubmit = async (e) => {
-      e.preventDefault()
-
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
           router.push('/dashboard')
           console.log(user);
       })

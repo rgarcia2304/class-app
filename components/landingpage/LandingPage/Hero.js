@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState,useEffect } from 'react';
+import Link from 'next/link';
 const item_list = [
   { word: "Shoes", image: "/images/shoes.jpg" },
   { word: "Cowboy Hat", image: "/images/cowboy.webp" },
@@ -37,7 +38,7 @@ useState(() => {
             <Header4>{currentWord.word}</Header4>
             <Header3>for you</Header3>
             <Image src={currentWord.image} alt={currentWord.word} />
-            <CTAButton>Get Started Today</CTAButton>
+            <CTAButton href='/auth/signup'>Get Started Today</CTAButton>
         </Container>
     </Section>
   );
@@ -101,7 +102,7 @@ const Header4 = styled.h1`
 
 
 
-const CTAButton = styled.button`
+const CTAButton = styled(Link)`
     display:flex;
     justify-content:center;
     background-color:#ed284c; 
@@ -116,6 +117,7 @@ const CTAButton = styled.button`
     width:250px;
     height:50px;
     align-items: center;
+    font-family:sans-serif;
 `;
 
 const Image = styled.img`

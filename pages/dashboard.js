@@ -3,38 +3,28 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import Navbar from '@/components/dashboard/Dashboard/Navbar'
 import Hero from '@/components/dashboard/Dashboard/Hero'
-//import { useStateContext } from '@/context/StateContext'
+import { useStateContext } from '@/context/StateContext'
 import { useRouter } from 'next/router'
 import Footer from '@/components/dashboard/Dashboard/Footer'
 
-
-
 const Dashboard = () => {
+  const { user } = useStateContext()  
+  const router = useRouter()
 
-  // const { user } = useStateContext()  
-
-  // const router = useRouter()
-
-
-  // useEffect(() => {
-  //   if(!user){
-  //     router.push('/')
-  //   }else{
-
-  //   }
-  // }, user)
-
-
-
+  useEffect(() => {
+    //still thinks user is undefined 
+    if(user===null){
+      router.push('/')
+    }else{
+    }
+  }, [user])
 
   return (
     <>
         <Navbar></Navbar>;
         <Hero> </Hero>;
         <Footer></Footer>;
-
     </>
-    
   )
 }
 

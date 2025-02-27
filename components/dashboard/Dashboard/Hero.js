@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import { useState,useEffect } from 'react';
+import { useContext } from 'react';
 
 const Hero = () => {
   return (
