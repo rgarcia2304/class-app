@@ -1,59 +1,38 @@
-// pages/loading.js
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled, { keyframes } from 'styled-components';
-import { searchBIFLSubreddit, getTopComments} from './api/redditApi';
+import { getPostsWithComments } from './api/redditApi';
 
 const LoadingPage = () => {
   const router = useRouter();
-  const { query } = router.query; // Get the search query from URL
 
   useEffect(() => {
-    if (!query) {
+    if (!router.isReady) return; // Wait for router to be ready
+
+    // Extract the search term from the query parameter named "query"
+    const searchQuery = router.query.query;
+    console.log("Router query:", router.query);
+
+    if (!searchQuery || searchQuery.trim() === "") {
+      console.log("No query parameter found. Redirecting to landing page.");
       router.push('/');
       return;
     }
 
     const fetchData = async () => {
       try {
-        // Fetch search results from Reddit.
-        const searchData = await searchBIFLSubreddit(query);
-        let post = null;
-        let comments = [];
-
-        if (
-          searchData &&
-          searchData.data &&
-          searchData.data.children &&
-          searchData.data.children.length > 0
-        ) {
-          post = searchData.data.children[0].data;
-          const commentsData = await getTopComments(post.id);
-          if (
-            commentsData &&
-            commentsData[1] &&
-            commentsData[1].data &&
-            commentsData[1].data.children
-          ) {
-            comments = commentsData[1].data.children
-              .slice(0, 5)
-              .map((comment) => comment.data);
-          }
-        }
-
-        // Pass the fetched data to the results page by encoding it as JSON in the URL.
+        const data = await getPostsWithComments(searchQuery);
         router.push({
           pathname: '/results',
-          query: { data: JSON.stringify({ post, comments }) },
+          query: { data: JSON.stringify(data) },
         });
       } catch (error) {
-        console.error('Error fetching data:', error);
-        // Optionally, handle the error (e.g., push to an error page)
+        console.error("Error fetching search data:", error);
       }
     };
 
     fetchData();
-  }, [query, router]);
+  }, [router]);
 
   return (
     <LoadingContainer>

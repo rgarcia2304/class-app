@@ -1,4 +1,3 @@
-// pages/results.js
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
@@ -6,40 +5,40 @@ import styled from 'styled-components';
 const ResultsPage = () => {
   const router = useRouter();
   const { data } = router.query;
-  const [resultData, setResultData] = useState(null);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     if (data) {
       try {
         const parsedData = JSON.parse(data);
-        setResultData(parsedData);
+        setResults(parsedData);
       } catch (error) {
-        console.error('Error parsing data:', error);
+        console.error("Error parsing data:", error);
         router.push('/');
       }
     }
   }, [data, router]);
 
-  if (!resultData) {
+  if (!results || results.length === 0) {
     return <div>Loading...</div>;
   }
 
-  const { post, comments } = resultData;
-
   return (
     <ResultsContainer>
-      <PostSection>
-        <h2>{post.title}</h2>
-        <p>{post.selftext}</p>
-      </PostSection>
-      <CommentsSection>
-        <h3>Top Comments:</h3>
-        <ul>
-          {comments.map((comment, index) => (
-            <li key={index}>{comment.body}</li>
-          ))}
-        </ul>
-      </CommentsSection>
+      {results.map((item, index) => (
+        <ResultCard key={index}>
+          <PostTitle>{item.post.title}</PostTitle>
+          <PostBody>{item.post.selftext || "No content available"}</PostBody>
+          <CommentsSection>
+            <h3>Top Comments:</h3>
+            <ul>
+              {item.comments.map((comment, idx) => (
+                <li key={idx}>{comment.body}</li>
+              ))}
+            </ul>
+          </CommentsSection>
+        </ResultCard>
+      ))}
     </ResultsContainer>
   );
 };
@@ -50,12 +49,21 @@ const ResultsContainer = styled.div`
   margin: 0 auto;
 `;
 
-const PostSection = styled.div`
+const ResultCard = styled.div`
   margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+`;
+
+const PostTitle = styled.h2`
+  margin-bottom: 10px;
+`;
+
+const PostBody = styled.p`
+  margin-bottom: 10px;
 `;
 
 const CommentsSection = styled.div`
-  margin-top: 20px;
   ul {
     list-style-type: none;
     padding: 0;
