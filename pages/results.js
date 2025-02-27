@@ -14,7 +14,7 @@ const ResultsPage = () => {
         setResults(parsedData);
       } catch (error) {
         console.error("Error parsing data:", error);
-        router.push('/');
+        router.push("/");
       }
     }
   }, [data, router]);
@@ -28,12 +28,16 @@ const ResultsPage = () => {
       {results.map((item, index) => (
         <ResultCard key={index}>
           <PostTitle>{item.post.title}</PostTitle>
-          <PostBody>{item.post.selftext || "No content available"}</PostBody>
+          <PostBody>
+            {item.post.selftext ||
+              (item.post.content && item.post.content.text) ||
+              "No content available"}
+          </PostBody>
           <CommentsSection>
             <h3>Top Comments:</h3>
             <ul>
               {item.comments.map((comment, idx) => (
-                <li key={idx}>{comment.body}</li>
+                <li key={idx}>{comment.text}</li>
               ))}
             </ul>
           </CommentsSection>

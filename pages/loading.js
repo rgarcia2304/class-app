@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled, { keyframes } from 'styled-components';
-import { getPostsWithComments } from './api/redditApi';
+import { getPostsWithComments } from './api/redditAPI';
 
 const LoadingPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.isReady) return; // Wait for router to be ready
-
-    // Extract the search term from the query parameter named "query"
-    const searchQuery = router.query.query;
+    if (!router.isReady) return;
+    const searchQuery = router.query.query; //accesses query element from when it gets pressed
     console.log("Router query:", router.query);
 
     if (!searchQuery || searchQuery.trim() === "") {
@@ -27,7 +25,7 @@ const LoadingPage = () => {
           query: { data: JSON.stringify(data) },
         });
       } catch (error) {
-        console.error("Error fetching search data:", error);
+        console.error("error fetching data", error);
       }
     };
 
