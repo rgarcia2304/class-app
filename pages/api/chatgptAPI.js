@@ -1,33 +1,45 @@
 import OpenAI from "openai";
 const openai = new OpenAI();
 
-export const suggestProductWithChatGPT = async (aggregatedData, searchQuery) => {
+export const suggestProductWithChatGPT = async (responseData, searchQuery) => {
   const prompt = `
-I have aggregated Reddit results in JSON format about "${searchQuery}". Each item includes a "post" (with properties such as "title" and either "selftext" or "content.text") and a "comment" (with a "text" property).
+You are provided with response reddit data in JSON format for the query "${searchQuery}". 
+Each item contains a "post" (with properties like "title" and either "selftext" or "content.text") and a "comment" (with a "text" property).
 
-Before processing, check if "${searchQuery}" explicitly indicates a search for a purchasable physical product. Look for clear product-related language (e.g., 'buy', 'purchase', specific product names, etc.). 
+Follow these steps to properly analyze the input:
 
-- If "${searchQuery}" clearly indicates a desire for a physical product, analyze the aggregated data and recommend ONE product with the following JSON structure:
-{
-  "product": "Product Name",
-  "reason": "A brief explanation of why this product is recommended",
-  "link_used": "an eBay link to the product",
-  "link_new": "a link to the company website",
-  "isProduct": "yes"
-}
+ Determine if the query "${searchQuery}" is intended to obtain a recommendation for a tangible, purchasable product.
+  Treat it as a product query if the text includes terms such as 
+  "recommendation", "buy", "purchase", or mentions specific product types (e.g., "oxford shoe", "smartphone", etc.). 
+  For example, a query like "high quality oxford shoe recommendation" should be recognized as product-related.
 
-- If "${searchQuery}" does not clearly indicate a product (for example, if it’s a question like 'am I short', or a statement or inquiry about personal traits, experiences, services, vacations, etc.), then return the following JSON:
-{
-  "product": "N/A",
-  "reason": "This query does not pertain to a physical product available for purchase.",
-  "link_used": "",
-  "link_new": "",
-  "isProduct": "no"
-}
+ Case for if "${searchQuery}" is a product query:
+    Analyze the response data and select ONE product suggestion that is a physical item available for purchase.
+    Ensure the recommended product is tangible (not a service, experience, or digital item).
+    Return the following JSON object in this format:
+   
+   {
+     "product": "Product Name",
+     "reason": "A brief explanation of why this product is recommended based on the response data.",
+     "link_used": "an eBay link to the product",
+     "link_new": "a link to the company website for the product",
+     "isProduct": "yes"
+   }
 
-Always verify that the recommended item is indeed a physical product and not a service or non-tangible item.
-}
-Data: ${JSON.stringify(aggregatedData)}
+   Case for if "${searchQuery}" does not indicate a product query (for example, if it pertains to personal traits, experiences, or non-tangible subjects):
+   - Return the following JSON object in this format:
+   {
+     "product": "N/A",
+     "reason": "This query does not pertain to a physical product available for purchase.",
+     "link_used": "",
+     "link_new": "",
+     "isProduct": "no"
+   }
+
+    SUPER IMPORTANT TO Output ONLY the JSON object exactly in the format specified above with no additional text or commentary.
+
+
+Data: ${JSON.stringify(responseData)}
   `;
 
   // Construct the parameters object as shown in the documentation:
