@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components";
 const LoadingPage = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
-    const searchQuery = router.query.query; // expecting URL like /loading?query=...
+    const searchQuery = router.query.query; 
   
     useEffect(() => {
       if (!router.isReady) return;
@@ -14,14 +14,16 @@ const LoadingPage = () => {
         return;
       }
   
+      //needed in order to get loading effect to work when rendering
       const fetchRecommendation = async () => {
         try {
+          //processes the Reddit information and ChatGPT analyzer
           const res = await fetch("/api/getRecommendation", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ query: searchQuery }),
           });
-          // Instead of reading text, directly get JSON
+          
           const recommendation = await res.json();
           router.push({
             pathname: "/results",
@@ -60,7 +62,7 @@ const LoadingPage = () => {
   
   const Spinner = styled.div`
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #ed284c;
+    border-top: 8px solid #008000;;
     border-radius: 50%;
     width: 60px;
     height: 60px;

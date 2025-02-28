@@ -6,6 +6,8 @@ import Hero from '@/components/dashboard/Dashboard/Hero'
 import { useStateContext } from '@/context/StateContext'
 import { useRouter } from 'next/router'
 import Footer from '@/components/dashboard/Dashboard/Footer'
+import Explanation from '@/components/landingpage/LandingPage/Explanation'
+
 
 const Dashboard = () => {
   const { user } = useStateContext()  
@@ -23,7 +25,9 @@ const Dashboard = () => {
     <>
         <Navbar></Navbar>;
         <Hero> </Hero>;
+        <Explanation></Explanation>
         <Footer></Footer>;
+
     </>
   )
 }

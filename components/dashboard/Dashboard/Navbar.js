@@ -4,7 +4,7 @@ import Link from 'next/link'
 //import { logOut } from '@/backend/Auth';
 //import { useStateContext } from '@/context/StateContext';
 import Home from './Home';
-import ShoppingCart from '../ShoppingCart';
+import ShoppingCart from './ShoppingCart';
 import LogOut from './Logout';
 import SignUpButton from './SignUpButton';
 

@@ -1,24 +1,8 @@
 import axios from "axios";
 
-const RAPIDAPI_KEY = "1c07cae170msha3fce8fd2d70dd2p1bc9bfjsnefe870ff982e";
+const RAPIDAPI_KEY = process.env.RAPID_API_KEY
 const RAPIDAPI_HOST = "reddit-scraper2.p.rapidapi.com";
 
-const makeRequest = async (options) => {
-  try {
-    const response = await axios.request(options);
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.status === 429) {
-      const retryAfter = error.response.headers['retry-after'] || 1; // default to 1 second if missing
-      console.warn(`Rate limit exceeded. Retrying after ${retryAfter} seconds...`);
-      await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
-      // Retry the request once
-      const response = await axios.request(options);
-      return response.data;
-    }
-    throw error;
-  }
-};
 
 // Searches all of Reddit for posts based on the given query.
 export const searchReddit = async (query) => {
@@ -45,7 +29,7 @@ export const searchReddit = async (query) => {
   }
 };
 
-// Fetches the top comments for a specific post.
+// Fetches the top comments for the post
 export const getTopComments = async (post_id) => {
   try {
     const options = {
@@ -68,17 +52,12 @@ export const getTopComments = async (post_id) => {
   }
 };
 
-// Aggregates the top 2 posts with their top 3 comments each.
+//logic to specify size of results
 export const getPostsWithComments = async (query) => {
   try {
     const postsData = await searchReddit(query);
     console.log("RapidAPI postsData:", postsData);
     
-    // Ensure postsData.data is an array.
-    if (!Array.isArray(postsData.data)) {
-      console.error("Unexpected postsData structure:", postsData);
-      throw new Error("Unexpected postsData structure");
-    }
     // Limit to top 2 posts.
     const posts = postsData.data.slice(0, 1);
 
@@ -88,17 +67,17 @@ export const getPostsWithComments = async (query) => {
         const commentsData = await getTopComments(post.id);
         let comments = [];
         // Limit to top 3 comments.
-        if (commentsData && Array.isArray(commentsData.data)) {
+        if (commentsData) {
           comments = commentsData.data.slice(0, 1);
         } else {
-          console.error("Unexpected commentsData structure for post", post.id, commentsData);
+          console.error("Unexpected error with comment data", post.id, commentsData);
         }
         return { post, comments };
       })
     );
     return postsWithComments;
   } catch (error) {
-    console.error("Error aggregating posts and comments:", error);
+    console.error("Error getting the comments from the posts:", error);
     throw error;
   }
 };
