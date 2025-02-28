@@ -70,7 +70,7 @@ const Container2 = styled.div`
 `;
 const Header1 = styled.h1`
     font-family: sans-serif;
-    color: #ed284c;
+    color: #008000;
     position: absolute;
     font-size: 140px;
     left: 20%;
@@ -80,7 +80,7 @@ const Header1 = styled.h1`
 `;
 const Header2 = styled.h1`
     font-family: sans-serif;
-    color: #ed284c;
+    color: #008000;
     position: absolute;
     font-size: 140px;
     left: 40%;
@@ -139,7 +139,7 @@ const Header4 = styled.h1`
     text-align:center;
     margin-bottom:10px;
     margin-top:10px;
-    color: #ed284c;;
+    color: #008000;
 
 `;
 
@@ -147,7 +147,7 @@ const Header4 = styled.h1`
 const CTAButton = styled.button`
     display:flex;
     justify-content:center;
-    background-color:#ed284c; 
+    background-color: #008000; 
     border: none;
     color: white;
     padding: 10px 15px;

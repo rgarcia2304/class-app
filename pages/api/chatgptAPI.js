@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-const openai = new OpenAI(); // It automatically reads OPENAI_API_KEY from your environment
+const openai = new OpenAI();
 
 export const suggestProductWithChatGPT = async (aggregatedData, searchQuery) => {
   const prompt = `

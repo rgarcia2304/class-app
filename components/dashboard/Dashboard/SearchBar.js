@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
     <Form onSubmit={handleSubmit}>
       <Input
         type="text"
-        placeholder="Search..."
+        placeholder="Start your search for a high quality item...."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
@@ -33,9 +33,10 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 10px;
-  width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width:500px;
+  height:50px;
 `;
 
 export default SearchBar;

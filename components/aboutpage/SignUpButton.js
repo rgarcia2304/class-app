@@ -11,7 +11,7 @@ const SignUpButton = () => {
 };
 
 const SigninButtons = styled(Link)`
-      background-color:#ed284c; 
+      background-color: #008000; 
       border: none;
       color: white;
       padding: 10px 15px;

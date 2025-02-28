@@ -19,12 +19,13 @@ const Hero = () => {
   return (
     <Section>
       <Container>
-        <Header1>Why not search</Header1>
-        <Header2>for something</Header2>
-        <Header3>that will last you</Header3>
-        <Header4>Forever</Header4>
-        <Image src="/images/images.jpeg" alt="hello" />
-        <SearchBar onSearch={handleSearch} />
+        <Header1>Lets keep our  </Header1>
+        <Header2>Earth Beautiful</Header2>
+        <Header3>By Buying</Header3>
+        <Header4>Sustainably</Header4>
+        <SearchDiv> <SearchBar onSearch={handleSearch} /></SearchDiv>
+        <Image src="/images/forest.gif" alt="hello" />
+        
       </Container>
     </Section>
   );
@@ -40,42 +41,59 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top:0px;
 `;
 
 const Header1 = styled.h1`
-  font-family: sans-serif;
-  font-size: 50px;
-  text-align: center;
-  margin-bottom: 10px;
-`;
+    font-family: sans-serif;
+    color: white;
+    position: absolute;
+    font-size: 100px;
+    left: 0%;
+    top: 25%;
 
+`;
 const Header2 = styled.h1`
-  font-family: sans-serif;
-  font-size: 50px;
-  text-align: center;
-  margin: 10px;
+    font-family: sans-serif;
+    color: white;
+    position: absolute;
+    font-size: 100px;
+    left: 10%;
+    top: 40%;
+
 `;
 
 const Header3 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
-  text-align: center;
-  margin: 10px 0;
+    color: white;
+    position: absolute;
+    font-size: 100px;
+    left: 20%;
+    top: 55%;
 `;
 
 const Header4 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
-  text-align: center;
-  margin: 10px 0;
-  color: #ed284c;
+    color: white;
+    position: absolute;
+    font-size: 100px;
+    left: 30%;
+    top: 70%;
 `;
 
+const SearchDiv = styled.div`
+  font-family: sans-serif;
+    color: white;
+    position: absolute;
+    left: 40%;
+    top: 85%;
+`;
+
+
 const Image = styled.img`
-  margin-top: 10px;
-  width: 372px;
-  height: 200px;
+  margin-top: 0px;
+  width: 100%; 
+  height:100%;
   border-radius: 10px;
   margin-bottom: 30px;
 `;

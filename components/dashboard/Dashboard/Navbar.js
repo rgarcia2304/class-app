@@ -33,7 +33,7 @@ const Contact = styled(Link)`
     text-decoration:none;
     color:black;
     &:hover {
-    color: red;
+    color: #008000;;
   }
 
 `;
@@ -45,7 +45,7 @@ const About = styled(Link)`
     color:black;
 
     &:hover {
-    color: red;
+    color: #008000;;
   }
 
 `;
@@ -69,11 +69,11 @@ const Nav = styled.nav`
     justify-content: space-between;
     align-items: center;
     font-family: sans-serif;
-    height: 100px;
+    height: 75px;
     position: sticky;
     top: 0;
-    overflow: hidden;
-    background-color: transparent;
+    background: white;
+    z-index:1000;
 `;
 const Logo = styled(Link)`
     margin-left:20px;

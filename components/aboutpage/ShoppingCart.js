@@ -27,7 +27,7 @@ const Square = styled(Link)`
   }
 
   &:hover {
-    color: #ed284c; // Adjust hover effect as needed
+    color: #008000; // Adjust hover effect as needed
   }
 `;
 
