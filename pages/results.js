@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import NewButton from "@/components/resultPage/NewButton";
+import UsedButton from "@/components/resultPage/UsedButton";
 
 const ResultsPage = () => {
   const router = useRouter();
   const { data } = router.query;
-  const [results, setResults] = useState([]);
+  const [recommendation, setRecommendation] = useState(null);
 
   useEffect(() => {
     if (data) {
       try {
         const parsedData = JSON.parse(data);
-        setResults(parsedData);
+        setRecommendation(parsedData);
       } catch (error) {
         console.error("Error parsing data:", error);
         router.push("/");
@@ -19,30 +21,19 @@ const ResultsPage = () => {
     }
   }, [data, router]);
 
-  if (!results || results.length === 0) {
-    return <div>Loading...</div>;
+  if (!recommendation) {
+    return <div>Loading recommendation...</div>;
   }
 
   return (
     <ResultsContainer>
-      {results.map((item, index) => (
-        <ResultCard key={index}>
-          <PostTitle>{item.post.title}</PostTitle>
-          <PostBody>
-            {item.post.selftext ||
-              (item.post.content && item.post.content.text) ||
-              "No content available"}
-          </PostBody>
-          <CommentsSection>
-            <h3>Top Comments:</h3>
-            <ul>
-              {item.comments.map((comment, idx) => (
-                <li key={idx}>{comment.text}</li>
-              ))}
-            </ul>
-          </CommentsSection>
-        </ResultCard>
-      ))}
+      <ResultCard>
+        <ProductTitle>Recommended Product: {recommendation.product}</ProductTitle>
+        <ProductReason>{recommendation.reason}</ProductReason>
+        <NewButton href={recommendation.link_new}>Buy New</NewButton>
+        <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
+
+      </ResultCard>
     </ResultsContainer>
   );
 };
@@ -55,29 +46,19 @@ const ResultsContainer = styled.div`
 
 const ResultCard = styled.div`
   margin-bottom: 30px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
 `;
 
-const PostTitle = styled.h2`
+const ProductTitle = styled.h2`
   margin-bottom: 10px;
 `;
 
-const PostBody = styled.p`
-  margin-bottom: 10px;
+const ProductReason = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
 `;
 
-const CommentsSection = styled.div`
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-`;
 
 export default ResultsPage;
