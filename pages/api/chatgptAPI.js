@@ -16,7 +16,7 @@ Follow these steps to properly analyze the input:
  Case for if "${searchQuery}" is a product query:
     Analyze the response data and select ONE product suggestion that is a physical item available for purchase.
     Ensure the recommended product is tangible (not a service, experience, or digital item).
-    Return the following JSON object in this format:
+    Return this EXACT following JSON object in this format:
    
    {
      "product": "Product Name",
@@ -27,7 +27,7 @@ Follow these steps to properly analyze the input:
    }
 
    Case for if "${searchQuery}" does not indicate a product query (for example, if it pertains to personal traits, experiences, or non-tangible subjects):
-   - Return the following JSON object in this format:
+   - Return this EXACT following JSON object in this format:
    {
      "product": "N/A",
      "reason": "This query does not pertain to a physical product available for purchase.",
@@ -57,7 +57,10 @@ Data: ${JSON.stringify(responseData)}
 
   const completion = await openai.chat.completions.create(parameters);
   const output = completion.choices[0].message.content;
-  return JSON.parse(output);
+  //need to get rid of the tics for JSON
+  const myArray= output.split('```json\n')[1]?.split('\n```')[0]?.trim();
+  console.log(myArray);
+  return JSON.parse(myArray);
 };
 
 

@@ -22,7 +22,7 @@ const ResultsPage = () => {
   }, [data, router]);
 
   if (!recommendation) {
-    return <ProductTitle>You did not search for a product</ProductTitle>;
+    return <ProductTitle>loading....</ProductTitle>;
   }
 
   return (

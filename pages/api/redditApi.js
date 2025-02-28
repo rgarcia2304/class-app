@@ -67,8 +67,8 @@ export const getPostsWithComments = async (query) => {
         const commentsData = await getTopComments(post.id);
         let comments = [];
         // Limit to top 3 comments.
-        if (commentsData) {
-          comments = commentsData.data.slice(0, 2);
+        if (commentsData.data){
+           comments = commentsData.data.slice(0, 2);
            console.log(commentsData)
         } else {
           console.error("Unexpected error with comment data", post.id, commentsData);
