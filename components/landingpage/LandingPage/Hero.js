@@ -30,16 +30,6 @@ const Hero = () => {
     cycleWords();
   });
 
-  // Function to call the ChatGPT API endpoint
-  const handleTestChat = async () => {
-    try {
-      const res = await fetch("/api/chatgptAPI", { method: "POST" });
-      const data = await res.json();
-      setChatResult(data);
-    } catch (error) {
-      console.error("Error calling ChatGPT API:", error);
-    }
-  };
 
   return (
     <Section>

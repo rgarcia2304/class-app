@@ -22,7 +22,7 @@ const ResultsPage = () => {
   }, [data, router]);
 
   if (!recommendation) {
-    return <div>Loading recommendation...</div>;
+    return <ProductTitle>You did not search for a product</ProductTitle>;
   }
 
   return (
@@ -32,6 +32,7 @@ const ResultsPage = () => {
         <ProductReason>{recommendation.reason}</ProductReason>
         <NewButton href={recommendation.link_new}>Buy New</NewButton>
         <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
+
 
       </ResultCard>
     </ResultsContainer>
