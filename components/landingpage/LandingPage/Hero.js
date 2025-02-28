@@ -50,13 +50,6 @@ const Hero = () => {
         <Header3>for you</Header3>
         <Image src={currentWord.image} alt={currentWord.word} />
         <CTAButton href="/auth/signup">Get Started Today</CTAButton>
-        {/* New button to test ChatGPT API */}
-        <TestButton onClick={handleTestChat}>Test ChatGPT</TestButton>
-        {chatResult && (
-          <ChatResult>
-            <pre>{JSON.stringify(chatResult, null, 2)}</pre>
-          </ChatResult>
-        )}
       </Container>
     </Section>
   );
@@ -101,13 +94,13 @@ const Header4 = styled.h1`
   font-size: 50px;
   text-align: center;
   margin: 10px 0;
-  color: #ed284c;
+  color: #008000;
 `;
 
 const CTAButton = styled(Link)`
   display: flex;
   justify-content: center;
-  background-color: #ed284c;
+  background-color: #008000;
   border: none;
   color: white;
   padding: 10px 15px;
@@ -123,25 +116,7 @@ const CTAButton = styled(Link)`
   margin-top: 20px;
 `;
 
-// New button for testing ChatGPT API
-const TestButton = styled.button`
-  display: flex;
-  justify-content: center;
-  background-color: #0070f3;
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  text-align: center;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  width: 250px;
-  height: 50px;
-  align-items: center;
-  font-family: sans-serif;
-  margin-top: 20px;
-  cursor: pointer;
-`;
+
 
 const Image = styled.img`
   margin-top: 10px;
@@ -151,16 +126,6 @@ const Image = styled.img`
   margin-bottom: 30px;
 `;
 
-// Display ChatGPT API result
-const ChatResult = styled.div`
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #f3f3f3;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  font-family: monospace;
-`;
 
 export default Hero;
 

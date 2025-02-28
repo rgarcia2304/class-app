@@ -11,7 +11,7 @@ const LoginButton = () => {
 };
 
 const LoginButtons = styled(Link)`
-      background-color:#b5b0b0; 
+      background-color: #b5b0b0; 
       border: none;
       color:black;
       padding: 10px 15px;
