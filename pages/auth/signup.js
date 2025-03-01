@@ -2,24 +2,31 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useStateContext } from '@/context/StateContext';
 import { createUserWithEmailAndPassword } from '@/backend/Auth';
-import { auth } from '@/backend/Firebase';
 import LandingBar from '@/components/landingpage/LandingPage/LandingBar';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { db } from "@/backend/Firebase"
+import {doc,setDoc} from 'firebase/firestore'
+import { auth } from "@/backend/Firebase"
 
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setUser } = useStateContext();
+  const { setUser,user } = useStateContext();
   const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const currentUser = userCredential.user;
       // Save user to context
-      setUser(userCredential.user);
+      setUser(currentUser);
+      //adds new user to db to reference for wishlist
+      await setDoc(doc(db, "users",currentUser.uid), {
+        name: "user-wishlist",
+      });
       router.push('/dashboard');
     } catch (error) {
       console.error(error);
