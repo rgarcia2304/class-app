@@ -2,28 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link'
 //import { logOut } from '@/backend/Auth';
-//import { useStateContext } from '@/context/StateContext';
+import { StateContext, useStateContext } from '@/context/StateContext';
 import Home from './Home';
 import ShoppingCart from './ShoppingCart';
 import LogOut from './Logout';
-import SignUpButton from './SignUpButton';
-
-//import { useStateContext } from '@/context/StateContext';
 const Navbar = () => {
+  const {user} = useStateContext
+
   return (
     <Nav>
       <Logo href="/">Perreno </Logo>
       <Right_Items>
         <Home></Home>
         <About href="/about">About</About>
-        <Contact  href="/contact"> Contact</Contact>
+        <Contact href="/contact"> Contact</Contact>
          <ShoppingCart></ShoppingCart>
-         <LogOut></LogOut>
-         
+        <LogOut></LogOut>
       </Right_Items>
     </Nav>
-    );
-
+  );
 };
 
 const Contact = styled(Link)`
@@ -33,7 +30,7 @@ const Contact = styled(Link)`
     text-decoration:none;
     color:black;
     &:hover {
-    color: #008000;;
+    color: red;
   }
 
 `;
@@ -45,13 +42,13 @@ const About = styled(Link)`
     color:black;
 
     &:hover {
-    color: #008000;;
+    color: red;
   }
 
 `;
 const Right_Items = styled.div`
       display:flex;
-      width: 25%;
+      width: 35%;
       justify-content: space-between;
       align-items: center;
       height: 50px;
@@ -69,7 +66,7 @@ const Nav = styled.nav`
     justify-content: space-between;
     align-items: center;
     font-family: sans-serif;
-    height: 75px;
+    height: 100px;
     position: sticky;
     top: 0;
     background: white;
@@ -82,8 +79,4 @@ const Logo = styled(Link)`
     text-decoration:none;
     color:black;
 `;
-
-
-
-
 export default Navbar;
