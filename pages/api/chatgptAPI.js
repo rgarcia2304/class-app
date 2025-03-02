@@ -15,6 +15,9 @@ Follow these steps to properly analyze the input:
 
  Case for if "${searchQuery}" is a product query:
     Analyze the response data and select ONE product suggestion that is a physical item available for purchase.
+    Make sure the recommendation encompasses varied perspectives and do analyses based on all the different suggestions talked
+    about in the different posts not just what one user said. Also take note of the upvote count of posts etc.. MAKE AN WELL ROUNDED REVIEW
+    encompassing sentiment and tangibles.
     Ensure the recommended product is tangible (not a service, experience, or digital item).
     Return this EXACT following JSON object in this format:
    
@@ -57,6 +60,7 @@ Data: ${JSON.stringify(responseData)}
 
   const completion = await openai.chat.completions.create(parameters);
   const output = completion.choices[0].message.content;
+  console.log(output);
   //need to get rid of the tics for JSON
   const myArray= output.split('```json\n')[1]?.split('\n```')[0]?.trim();
   console.log(myArray);

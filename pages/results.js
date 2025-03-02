@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import NewButton from "@/components/resultPage/NewButton";
 import UsedButton from "@/components/resultPage/UsedButton";
+import Navbar from "@/components/wishlist/Navbar";
 
 //Database logic 
 import { db } from "@/backend/Firebase"
@@ -102,7 +103,9 @@ const ResultsPage = () => {
   }
 
   return (
-    <ResultsContainer>
+    <>
+     <Navbar></Navbar>
+     <ResultsContainer>
       <ResultCard>
         <ProductTitle>Recommended Product: {recommendation.product}</ProductTitle>
         <ProductReason>{recommendation.reason}</ProductReason>
@@ -112,6 +115,10 @@ const ResultsPage = () => {
 
       </ResultCard>
     </ResultsContainer>
+    
+    
+    </>
+   
   );
 };
 

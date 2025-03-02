@@ -59,7 +59,7 @@ export const getPostsWithComments = async (query) => {
     console.log("RapidAPI postsData:", postsData);
     
     // Limit to top 2 posts.
-    const posts = postsData.data.slice(0, 2);
+    const posts = postsData.data.slice(0, 5);
 
     const postsWithComments = await Promise.all(
       posts.map(async (post) => {
@@ -68,7 +68,7 @@ export const getPostsWithComments = async (query) => {
         let comments = [];
         // Limit to top 3 comments.
         if (commentsData.data){
-           comments = commentsData.data.slice(0, 2);
+           comments = commentsData.data.slice(0, 5);
            console.log(commentsData)
         } else {
           console.error("Unexpected error with comment data", post.id, commentsData);

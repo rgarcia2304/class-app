@@ -6,6 +6,7 @@ import styled from "styled-components";
 import BuyNewButton from "@/components/wishlist/BuyNewButton";
 import BuyUsedButton from "@/components/wishlist/BuyUsedButton";
 import Navbar from "@/components/wishlist/Navbar";
+import Trashcan from "@/components/wishlist/Delete";
 
 const Test = () => {
   const { user } = useStateContext();
@@ -58,17 +59,28 @@ const Test = () => {
         <Navbar></Navbar>
       <Section>
         <h1>Wishlist</h1>
+        <HeaderSection>
+           <Product>Product</Product>
+           <Product2> Purchase Links</Product2>
+             </HeaderSection>
+        
+    
         {wishList.map((item) => (
             <Items_div key={item.id}>
-            <p>{item.product}</p>
-            <Purchase>
-            <BuyNewButton href = {item.link1}>Buy New</BuyNewButton>
-            <BuyUsedButton href = {item.link2}>Buy Used</BuyUsedButton>
-            </Purchase>
-            
-            <button onClick={() => deleteItem(item.id)}>Delete</button>
+            <ListContent>
+            <Item>{item.product}</Item>
+                <Purchase>
+                <BuyNewButton href = {item.link1}>Buy New</BuyNewButton>
+                <BuyUsedButton href = {item.link2}>Buy Used</BuyUsedButton>
+                <Trashcan onClick={() => deleteItem(item.id)}></Trashcan>
+                </Purchase>
+
+            </ListContent>
+           
           </Items_div>
         ))}
+
+
       </Section>
     </>
   );
@@ -82,8 +94,41 @@ const Section = styled.div`
     font-family:sans-serif;
 `;
 
+const ListContent = styled.div`
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    font-family:sans-serif;
+    width:100%;
+    margin-bottom: 10px;
+`;
+
+const Item = styled.div`
+    font-weight:600;
+`
+const HeaderSection = styled.div`
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    font-family:sans-serif;
+    width:60%;
+`;
+
+const Product2 = styled.div`
+    margin-top:20px;
+    font-size: 20px;
+    margin-right:120px;
+    font-weight:600;
+`;
+const Product = styled.div`
+    font-size: 20px;
+    margin-top:20px;
+    font-weight:600;
+`
 const Items_div = styled.div`
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     justify-content:space-between;

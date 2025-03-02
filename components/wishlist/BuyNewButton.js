@@ -2,9 +2,9 @@ import React from 'react';
 import Link  from 'next/link';
 import styled from 'styled-components';
 
-const BuyNewButton = () => {
+const BuyNewButton = ({href}) => {
   return (
-    <BuyNewButtons href="/auth/signup">
+    <BuyNewButtons href = {href}>
       Buy New
     </BuyNewButtons>
   );
@@ -14,12 +14,18 @@ const BuyNewButtons = styled(Link)`
       background-color: #008000; 
       border: none;
       color: white;
-      padding: 10px 15px;
+      padding: 15px 15px;
       text-align: center;
       border-radius:12px;
-      font-size: 16px;
+      font-size: 14px;
       text-decoration:none;
       font-weight: 600;
+       width: 100px;
+      height:50px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:10px;
 
 `;
 
