@@ -28,8 +28,8 @@ const LogOut = () => {
 };
 
 
-const LogoutButton = styled.div`{
-      background-color: #ed284c; 
+const LogoutButton = styled.div`
+      background-color:  #008000; 
       border: none;
       color: white;
       padding: 10px 15px;
@@ -38,7 +38,5 @@ const LogoutButton = styled.div`{
       font-size: 16px;
       text-decoration: none;
       font-weight: 600;
-}
-    
 `;
 export default LogOut

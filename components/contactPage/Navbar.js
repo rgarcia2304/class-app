@@ -7,9 +7,11 @@ import Home from './Home';
 import LoginButton from './LoginButton';
 import SignUpButton from './SignUpButton';
 import ShoppingCart from './ShoppingCart';
+import { useStateContext } from '@/context/StateContext';
+import Login from '@/pages/auth/login';
+import LogOut from './Logout';
 const Navbar = () => {
-  //const { setUser } = useStateContext()
-
+  const { user } = useStateContext()
   return (
     <Nav>
       <Logo href="/">Perreno </Logo>
@@ -18,10 +20,10 @@ const Navbar = () => {
         <About href="/about">About</About>
         <Contact  href="/contact"> Contact</Contact>
          <ShoppingCart></ShoppingCart>
+         {user ? <LogOut></LogOut> : 
          <Buttons>
-        <LoginButton></LoginButton>
-        <SignUpButton></SignUpButton>
-        </Buttons>
+          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
+
       </Right_Items>
     </Nav>
   );

@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link'
 //import { logOut } from '@/backend/Auth';
-import { StateContext, useStateContext } from '@/context/StateContext';
+import { useStateContext } from '@/context/StateContext';
 import Home from './Home';
 import LoginButton from './LoginButton';
 import SignUpButton from './SignUpButton';
 import ShoppingCart from './ShoppingCart';
+import LogOut from './Logout';
 const Navbar = () => {
-  const {user} = useStateContext
+  const {user} = useStateContext()
 
   return (
     <Nav>
@@ -17,9 +18,9 @@ const Navbar = () => {
         <Home></Home>
         <About href="/about">About</About>
         <Contact href="/contact"> Contact</Contact>
-         <ShoppingCart></ShoppingCart>
-         <Buttons> <LoginButton></LoginButton> <SignUpButton></SignUpButton>
-        </Buttons>
+         {user ? <><ShoppingCart></ShoppingCart> <LogOut></LogOut> </>: 
+         <Buttons>
+          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
       </Right_Items>
     </Nav>
   );

@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import LoginButton from './LoginButton';
 import SignUpButton from './SignUpButton';
 import Link from 'next/link';
-const LandingBar = () => {
+import { useStateContext } from '@/context/StateContext';
+import LogOut from './Logout';
 
+const LandingBar = () => {
+  const { user } = useStateContext()
   return (
     <Nav>
       {/* <Logo onClick={() => logOut(setUser)} href="/">Perreno</Logo> */}
@@ -12,11 +15,10 @@ const LandingBar = () => {
       <Right_Items>
          <About href="/about">About</About>
          <Contact  href="/contact"> Contact</Contact>
-        <Buttons>
-        <LoginButton></LoginButton>
-        <SignUpButton></SignUpButton>
-        
-        </Buttons>
+         
+         {user ? <LogOut></LogOut> : 
+         <Buttons>
+          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
       </Right_Items>
     </Nav>
   );

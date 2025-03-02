@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import GetStarted from "./GetStartedButton";
 
 const item_list = [
   { word: "Shoes", image: "/images/shoes.jpg" },
@@ -39,7 +40,7 @@ const Hero = () => {
         <Header4>{currentWord.word}</Header4>
         <Header3>for you</Header3>
         <Image src={currentWord.image} alt={currentWord.word} />
-        <CTAButton href="/auth/signup">Get Started Today</CTAButton>
+        <GetStarted></GetStarted>
       </Container>
     </Section>
   );

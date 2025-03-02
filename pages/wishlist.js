@@ -7,16 +7,27 @@ import BuyNewButton from "@/components/wishlist/BuyNewButton";
 import BuyUsedButton from "@/components/wishlist/BuyUsedButton";
 import Navbar from "@/components/wishlist/Navbar";
 import Trashcan from "@/components/wishlist/Delete";
+import { useRouter } from "next/router";
 
 const Test = () => {
-  const { user } = useStateContext();
   const [wishList, setWishList] = useState([]);
   const fetchWishListRef = useRef(null);
+
+  const router = useRouter()
+  const { user } = useStateContext();
+    useEffect(() => {
+      //still thinks user is undefined 
+      if(user===null){
+        router.push('/')
+      }else{
+      }
+    }, [user])
 
   const getWishListRef = () => {
     return collection(db, `users/${user.uid}/list-items`);
   };
 
+    
  
   useEffect(() => {
     if (!user) return;

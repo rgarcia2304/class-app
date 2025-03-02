@@ -16,6 +16,13 @@ const ResultsPage = () => {
   const { data } = router.query;
   const [recommendation, setRecommendation] = useState(null);
   const { user } = useStateContext();
+    useEffect(() => {
+      //still thinks user is undefined 
+      if(user===null){
+        router.push('/')
+      }else{
+      }
+    }, [user])
 
   //All the dataBase information 
   const [wishList, setWishList] = useState([]);
