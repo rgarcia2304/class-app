@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ShoppingCart = () => {
   return (
-    <Square href="/dashboard">
+    <Square href="/wishlist">
       <FaShoppingCart />
     </Square>
   );

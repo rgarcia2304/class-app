@@ -30,7 +30,7 @@ const Contact = styled(Link)`
     text-decoration:none;
     color:black;
     &:hover {
-    color: red;
+    color: #008000;
   }
 
 `;
@@ -42,7 +42,7 @@ const About = styled(Link)`
     color:black;
 
     &:hover {
-    color: red;
+    color: #008000;
   }
 
 `;
