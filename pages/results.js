@@ -4,10 +4,73 @@ import styled from "styled-components";
 import NewButton from "@/components/resultPage/NewButton";
 import UsedButton from "@/components/resultPage/UsedButton";
 
+//Database logic 
+import { db } from "@/backend/Firebase"
+import {getDocs,collection,addDoc,deleteDoc,doc} from 'firebase/firestore'
+import { useStateContext } from "@/context/StateContext"
+import { auth } from "@/backend/Firebase"
+
 const ResultsPage = () => {
   const router = useRouter();
   const { data } = router.query;
   const [recommendation, setRecommendation] = useState(null);
+  const { user } = useStateContext();
+
+  //All the dataBase information 
+  const [wishList, setWishList] = useState([]);
+  const [newProduct, setNewProduct] = useState("");
+  const [newBuyNewLink, setNewBuyNewLink] = useState("");
+  const [newBuyUsedLink, setNewBuyUsedLink] = useState("");
+
+
+  //All the databaseCode
+  // Helper function to return the Firestore collection reference for the current user.
+  const getWishListRef = () => {
+    if (!user) return null;
+    return collection(db, `users/${user.uid}/list-items`);
+  };
+
+  // Use an effect that depends on the user to fetch the wishlist.
+  useEffect(() => {
+    if (!user) return;
+    const wishListRef = getWishListRef();
+    const fetchWishList = async () => {
+      try {
+        const data = await getDocs(wishListRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setWishList(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchWishList();
+  }, [user]);
+
+  // Function to handle submitting a new wishlist item.
+  const onSubmitWishlist = async () => {
+    if (!user) return;
+    const wishListRef = getWishListRef();
+    try {
+      await addDoc(wishListRef, {
+        product: newProduct,
+        link1: newBuyNewLink,
+        link2: newBuyUsedLink,
+        userId: user.uid,
+      });
+      // Optionally, re-fetch the wishlist after adding a new item.
+      const data = await getDocs(wishListRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setWishList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     if (data) {
@@ -21,6 +84,19 @@ const ResultsPage = () => {
     }
   }, [data, router]);
 
+  useEffect(() => {
+      if(!recommendation) return;
+      try {
+        setNewBuyNewLink(recommendation.link_new);
+        setNewBuyUsedLink(recommendation.link_used);
+        setNewProduct(recommendation.product);
+      } catch (error) {
+        console.error(error);
+  
+      }
+    }
+  , [recommendation]);
+
   if (!recommendation) {
     return <ProductTitle>loading....</ProductTitle>;
   }
@@ -32,7 +108,7 @@ const ResultsPage = () => {
         <ProductReason>{recommendation.reason}</ProductReason>
         <NewButton href={recommendation.link_new}>Buy New</NewButton>
         <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
-
+        <button onClick={onSubmitWishlist}>Add item to wishlistt</button>
 
       </ResultCard>
     </ResultsContainer>
