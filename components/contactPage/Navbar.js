@@ -19,8 +19,8 @@ const Navbar = () => {
         <Home></Home>
         <About href="/about">About</About>
         <Contact  href="/contact"> Contact</Contact>
-         <ShoppingCart></ShoppingCart>
-         {user ? <LogOut></LogOut> : 
+         
+         {user ?<><ShoppingCart></ShoppingCart><LogOut></LogOut></>  : 
          <Buttons>
           <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
 
@@ -54,7 +54,7 @@ const About = styled(Link)`
 `;
 const Right_Items = styled.div`
       display:flex;
-      width: 35%;
+      width: 25%;
       justify-content: space-between;
       align-items: center;
       height: 50px;

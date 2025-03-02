@@ -51,7 +51,7 @@ const About = styled(Link)`
 `;
 const Right_Items = styled.div`
       display:flex;
-      width: 35%;
+      width: 25%;
       justify-content: space-between;
       align-items: center;
       height: 50px;
