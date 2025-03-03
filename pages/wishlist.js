@@ -8,8 +8,12 @@ import BuyUsedButton from "@/components/wishlist/BuyUsedButton";
 import Navbar from "@/components/wishlist/Navbar";
 import Trashcan from "@/components/wishlist/Delete";
 import { useRouter } from "next/router";
+import NewsCarousel from "@/components/resultPage/News";
 
 const Test = () => {
+
+
+
   const [wishList, setWishList] = useState([]);
   const fetchWishListRef = useRef(null);
 
@@ -69,7 +73,7 @@ const Test = () => {
     <>
         <Navbar></Navbar>
       <Section>
-        <h1>Wishlist</h1>
+        <BigText>Wishlist</BigText>
         <HeaderSection>
            <Product>Product</Product>
            <Product2> Purchase Links</Product2>
@@ -85,14 +89,18 @@ const Test = () => {
                 <BuyUsedButton href = {item.link2}>Buy Used</BuyUsedButton>
                 <Trashcan onClick={() => deleteItem(item.id)}></Trashcan>
                 </Purchase>
-
             </ListContent>
-           
           </Items_div>
         ))}
-
-
+        
       </Section>
+
+      <BottomSection> 
+      <BigText>Learn More about Quality Products </BigText>
+      <BigText>and Sustainability </BigText>
+      <NewsCarousel />
+
+      </BottomSection>
     </>
   );
 };
@@ -103,6 +111,21 @@ const Section = styled.div`
     align-items: center;
     justify-content: center;
     font-family:sans-serif;
+`;
+
+const BottomSection= styled.div`
+    margin-top: 50px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    font-family:sans-serif;
+`;
+
+const BigText = styled.h1`
+    margin-top:30px;
+    font-size: 40px;
+    font-weight:600;
 `;
 
 const ListContent = styled.div`

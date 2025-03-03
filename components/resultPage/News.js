@@ -1,13 +1,66 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Sample Articles Data
+const sampleArticles = [
+  {
+    title: "New York Times",
+    description: "Want to Shop More Sustainably? These 6 Tips Will Help.",
+    image: "/images/newYorkTimes.webp",
+    url: "https://www.nytimes.com/wirecutter/reviews/how-to-shop-more-sustainably-tips/",
+  },
+  {
+    title: "Harvard",
+    description: "Sustainable Purchasing",
+    image: "/images/harvard.png",
+    url: "https://sustainable.harvard.edu/resources/sustainable-purchasing/",
+  },
+  {
+    title: "Center for Biological Diversity",
+    description: "12 Ways to Live More Sustainably",
+    image: "/images/bio.jpg",
+    url: "https://www.biologicaldiversity.org/programs/population_and_sustainability/sustainability/live_more_sustainably.html#",
+  },
+  {
+    title: "IBM",
+    description: "What is sustainability in business",
+    image: "/images/ibm.jpg",
+    url: "https://www.ibm.com/think/topics/business-sustainability",
+  },
+  {
+    title: "HausvonEden",
+    description: "5 reasons why you should focus on quality over quantity",
+    image: "/images/haus.webp",
+    url: "https://www.hausvoneden.com/lifestyle/5-reasons-why-you-should-focus-on-quality-instead-of-quantity/",
+  },
+  {
+    title: "MIT SLOAN",
+    description: "What Does “Product Quality” Really Mean?",
+    image: "/images/mit.jpg",
+    url: "https://sloanreview.mit.edu/article/what-does-product-quality-really-mean/",
+  },
+  {
+    title: "Forbes",
+    description: "The Price Of Quality: Why Investing In The Customer Matters",
+    image: "/images/forbes.webp",
+    url: "https://www.forbes.com/councils/forbesbusinessdevelopmentcouncil/2023/01/24/the-price-of-quality-why-investing-in-the-customer-matters/",
+  },
+  {
+    title: "Washington Post",
+    description: "How to buy quality clothes without spending a fortune",
+    image: "/images/wp.avif",
+    url: "https://www.washingtonpost.com/lifestyle/2024/01/31/how-to-buy-quality-clothes/",
+  },
+];
 
-const NewsCarousel = ({ articles }) => {
+// Main Carousel Component
+const NewsCarousel = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const articles = sampleArticles; // Using our sample articles
   const articlesPerPage = 4;
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
- 
+  // Auto slide every 5 seconds
   useEffect(() => {
     const intervalId = setInterval(() => {
       setStartIndex((prevIndex) =>
@@ -31,7 +84,6 @@ const NewsCarousel = ({ articles }) => {
 
   return (
     <CarouselContainer>
-      
       <ArticlesContainer>
         {articles.slice(startIndex, startIndex + articlesPerPage).map((article, index) => (
           <ArticleLink key={index} href={article.url} target="_blank" rel="noopener noreferrer">
@@ -45,15 +97,14 @@ const NewsCarousel = ({ articles }) => {
       </ArticlesContainer>
 
       <ArrowContainer>
-      <ArrowButton onClick={prevSlide} disabled={articles.length <= articlesPerPage}>
-        ❮
-      </ArrowButton>
-      <ArrowButton onClick={nextSlide} disabled={articles.length <= articlesPerPage}>
-        ❯
-      </ArrowButton>
-
+        <ArrowButton onClick={prevSlide} disabled={articles.length <= articlesPerPage}>
+          ❮
+        </ArrowButton>
+        <ArrowButton onClick={nextSlide} disabled={articles.length <= articlesPerPage}>
+          ❯
+        </ArrowButton>
       </ArrowContainer>
-      
+
       <DotsContainer>
         {Array.from({ length: totalPages }).map((_, index) => (
           <Dot key={index} active={index === Math.floor(startIndex / articlesPerPage)} />
@@ -63,6 +114,7 @@ const NewsCarousel = ({ articles }) => {
   );
 };
 
+// Styled Components
 const CarouselContainer = styled.div`
   display: flex;
   align-items: center;
@@ -73,8 +125,8 @@ const CarouselContainer = styled.div`
 `;
 
 const ArrowContainer = styled.div`
-    display:flex;
-`
+  display: flex;
+`;
 
 const ArticlesContainer = styled.div`
   display: flex;
@@ -163,4 +215,5 @@ const Dot = styled.div`
 `;
 
 export default NewsCarousel;
+
 

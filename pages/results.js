@@ -12,59 +12,6 @@ import { useStateContext } from "@/context/StateContext"
 import { auth } from "@/backend/Firebase"
 import NewsCarousel from "@/components/resultPage/News";
 
-//imported images for news carousel
-const sampleArticles = [
-  {
-    title: "Breaking News 1",
-    description: "Summary of news 1",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article1",
-  },
-  {
-    title: "Tech Trends",
-    description: "Latest in tech",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article2",
-  },
-  {
-    title: "Politics Update",
-    description: "Government news",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article3",
-  },
-  {
-    title: "Sports Roundup",
-    description: "Scores & highlights",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article4",
-  },
-  {
-    title: "Entertainment Buzz",
-    description: "Celebrity news",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article5",
-  },
-  {
-    title: "Health & Wellness",
-    description: "Tips for well-being",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article6",
-  },
-  {
-    title: "Finance Watch",
-    description: "Market trends",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article7",
-  },
-  {
-    title: "Travel Diaries",
-    description: "Beautiful destinations",
-    image: "/images/1.webp",
-    url: "https://newslink.com/article8",
-  },
-];
-
-
 const ResultsPage = () => {
   const router = useRouter();
   const { data } = router.query;
@@ -166,17 +113,24 @@ const ResultsPage = () => {
   return (
     <>
      <Navbar></Navbar>
+     <ImageContainer>
+     <Image  src = "/images/peterpannn.gif" />
+     </ImageContainer>
+     
      <ResultsContainer>
-      <ResultCard>
-        <ProductTitle>Recommended Product: {recommendation.product}</ProductTitle>
+        <ProductTitle>Recommended Product:</ProductTitle>
+        <ProductTitle>{recommendation.product}</ProductTitle>
         <ProductReason>{recommendation.reason}</ProductReason>
-        <NewButton href={recommendation.link_new}>Buy New</NewButton>
-        <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
-        <button onClick={onSubmitWishlist}>Add item to wishlistt</button>
 
-      </ResultCard>
+        <ButtonsContainer>
+          <NewButton href={recommendation.link_new}>Buy New</NewButton>
+          <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
+        </ButtonsContainer>
     </ResultsContainer>
-    <NewsCarousel articles={sampleArticles} />
+    <WishlistContainer> <WishlistButton onClick={onSubmitWishlist}> Add item to wishlist</WishlistButton> </WishlistContainer>
+    
+    <NewsText> Learn More About Sustainability</NewsText>
+    <NewsCarousel/>
     
     
     </>
@@ -184,27 +138,81 @@ const ResultsPage = () => {
   );
 };
 
+
 const ResultsContainer = styled.div`
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
+  
 `;
 
-const ResultCard = styled.div`
-  margin-bottom: 30px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
-`;
-
+const ButtonsContainer= styled.div`
+  display:flex;
+  justify-content:space-between;
+  padding-right:32%;
+  padding-left:32%;
+`
 const ProductTitle = styled.h2`
   margin-bottom: 10px;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  font-size: 35px;
+  text-align:center;
 `;
 
 const ProductReason = styled.p`
-  font-size: 16px;
   line-height: 1.5;
+  margin-bottom: 10px;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  font-size: 20px;
+  text-align:center;
 `;
 
+const WishlistContainer= styled.div`
+  display:flex;
+  justify-content:center;
+  width:100%;
+`
+const WishlistButton = styled.button`
+  background-color: #008000;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+`;
+
+const Image = styled.img`
+  margin-top: 10px;
+  width: 30%;
+  height: 300px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+`;
+
+const NewsText = styled.div`
+  margin-top: 100px;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  font-size: 40px;
+  text-align:center;
+  font-weight: 600;
+`
+
+const ImageContainer = styled.div`
+  display:flex;
+  justify-content: center;
+`
 
 export default ResultsPage;

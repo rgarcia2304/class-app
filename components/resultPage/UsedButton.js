@@ -11,9 +11,10 @@ const UsedButton = ({ href }) => {
   };
 
 const StyledButton = styled.a`
-  background-color: #b5b0b0;
+  background-color: #008000;
   border: none;
-  color: black;
+  color: white;
+  margin-right:30px;
   padding: 10px 15px;
   text-align: center;
   border-radius: 12px;
@@ -21,7 +22,10 @@ const StyledButton = styled.a`
   text-decoration: none;
   font-weight: 600;
   display: inline-block;
+  font-family: sans-serif;
+  width:100px;
 `;
+
 
 
 
