@@ -1,14 +1,9 @@
-import { getPostsWithComments } from "./redditAPI";
+import { getPostsWithComments } from "./rapid";
 import { suggestProductWithChatGPT } from "./chatgptAPI";
 
 export default async function handler(req, res) {
     try {
-
-      //prevents blank querires
       const { query } = req.body;
-      if (!query || query.trim() === "") {
-        return res.status(400).json({ error: "Missing query in request body" });
-      }
       const responseData = await getPostsWithComments(query);
       const productRecommendation = await suggestProductWithChatGPT(responseData, query);
       console.log(productRecommendation);
