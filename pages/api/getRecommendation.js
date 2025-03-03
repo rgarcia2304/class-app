@@ -3,6 +3,7 @@ import { suggestProductWithChatGPT } from './chatgptAPI';
 
 export default async function handler(req, res) {
     try {
+      
       //prevents blank querires
       const { query } = req.body;
       if (!query || query.trim() === "") {

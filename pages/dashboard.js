@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import Navbar from '@/components/dashboard/Dashboard/Navbar'
 import Hero from '@/components/dashboard/Dashboard/Hero'
 import { useStateContext } from '@/context/StateContext'
 import { useRouter } from 'next/router'
-import Footer from '@/components/dashboard/Dashboard/Footer'
 
 
 const Dashboard = () => {
@@ -43,7 +41,7 @@ const Dashboard = () => {
 
         <Container2>
         <Headerabout>
-          <Image src = "/images/search.png"/>
+          <Image src = "/images/searching.jpg"/>
           </Headerabout>
 
         <Right_side_div>
@@ -71,7 +69,7 @@ const Dashboard = () => {
         
         <Container2>
         <Headerabout>
-          <Image src = "/images/giving.png"/>
+          <Image src = "/images/giftingg.png"/>
           </Headerabout>
 
         <Right_side_div>

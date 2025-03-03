@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const NewButton = ({ href }) => {
     return (
       <Link href={href} passHref>
-        <StyledButton>Used</StyledButton>
+        <StyledButton>Buy Used</StyledButton>
       </Link>
     );
   };
@@ -23,7 +23,7 @@ const StyledButton = styled.a`
   display: inline-block;
   font-family:sans-serif;
   margin-left:20px;
-  width:100px;
+  width:120px;
 `;
 
 

@@ -17,9 +17,10 @@ const Navbar = () => {
       <Logo href="/">Perreno </Logo>
       <Right_Items>
       {user ? <> 
+          <Home></Home>
           <About href="/about">About</About>
           <Contact href="/contact"> Contact</Contact>
-         <Home></Home><ShoppingCart></ShoppingCart> <LogOut></LogOut> </>: 
+         <ShoppingCart></ShoppingCart> <LogOut></LogOut> </>: 
         <>
           <About href="/about">About</About>
           <Contact href="/contact"> Contact</Contact>

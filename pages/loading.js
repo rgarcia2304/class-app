@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components"
 
 const LoadingPage = () => {
     const router = useRouter();
