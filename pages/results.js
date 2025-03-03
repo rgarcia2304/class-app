@@ -10,6 +10,60 @@ import { db } from "@/backend/Firebase"
 import {getDocs,collection,addDoc,deleteDoc,doc} from 'firebase/firestore'
 import { useStateContext } from "@/context/StateContext"
 import { auth } from "@/backend/Firebase"
+import NewsCarousel from "@/components/resultPage/News";
+
+//imported images for news carousel
+const sampleArticles = [
+  {
+    title: "Breaking News 1",
+    description: "Summary of news 1",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article1",
+  },
+  {
+    title: "Tech Trends",
+    description: "Latest in tech",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article2",
+  },
+  {
+    title: "Politics Update",
+    description: "Government news",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article3",
+  },
+  {
+    title: "Sports Roundup",
+    description: "Scores & highlights",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article4",
+  },
+  {
+    title: "Entertainment Buzz",
+    description: "Celebrity news",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article5",
+  },
+  {
+    title: "Health & Wellness",
+    description: "Tips for well-being",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article6",
+  },
+  {
+    title: "Finance Watch",
+    description: "Market trends",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article7",
+  },
+  {
+    title: "Travel Diaries",
+    description: "Beautiful destinations",
+    image: "/images/1.webp",
+    url: "https://newslink.com/article8",
+  },
+];
+
 
 const ResultsPage = () => {
   const router = useRouter();
@@ -122,6 +176,7 @@ const ResultsPage = () => {
 
       </ResultCard>
     </ResultsContainer>
+    <NewsCarousel articles={sampleArticles} />
     
     
     </>
