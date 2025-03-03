@@ -12,13 +12,14 @@ const Hero = () => {
             <Header1>We've got </Header1>
             <Header2>to stop </Header2>
             <Header5>this</Header5>
-            <Header3>We noticed that nowadays we buy more and more products but they last less and less creating an infinite cycle</Header3>
-            <CTAButton>Get Started Today</CTAButton>
+            <Header3>We noticed that nowadays, 
+                we buy more and more products that last less and less.
+            </Header3>
         </Container>
         <Container2>
         <Headerabout>About Perreno</Headerabout>
         <Headeraboutcont> Here at Perrano we are commited to giving you the best product recommendations on pretty much everything.
-            We source our recommendations based on what real people think is the best.
+            We source our recommendations based on what real people think.
             <Space> 
             </Space>
             <Space> 
@@ -29,8 +30,9 @@ const Hero = () => {
             </Space>
              Now why are we doing this?
             We like many people are tired of buying things that break right away. 
-            When you buy quality items you can use them for a pretty long time. This in turn saves you money, and helps our earth one less item
-            thrown in the trash at a time
+            When found it's better not to blind buy anymore. 
+            Using Perreno you can save your wallet and the planet in the long run. 
+            All this is accomplished one recommendation at a time.
             <Space> 
             </Space>
             <Space> 
@@ -61,38 +63,36 @@ const Container = styled.div`
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    margin-top:50px;
 `;
 const Container2 = styled.div`
     display:flex;
     justify-content:space-between;
-    margin-top:50px;
 `;
 const Header1 = styled.h1`
     font-family: sans-serif;
     color: #008000;
     position: absolute;
-    font-size: 140px;
-    left: 20%;
-    top: 10%;
+    font-size: 100px;
+    left: 25%;
+    top: 25%;
 
 `;
 const Header2 = styled.h1`
     font-family: sans-serif;
     color: #008000;
     position: absolute;
-    font-size: 140px;
-    left: 40%;
-    top: 30%;
+    font-size: 100px;
+    left: 45%;
+    top: 40%;
 
 `;
 const Header5 = styled.h1`
     font-family: sans-serif;
     color: black;
     position: absolute;
-    font-size: 140px;
+    font-size: 100px;
     left: 60%;
-    top: 50%;
+    top: 55%;
 
 `;
 const Header3 = styled.h1`
@@ -102,7 +102,6 @@ const Header3 = styled.h1`
     font-size: 50px;
     text-align:center;
     margin-top:10px;
-    margin-bottom: 20px;
     margin-left: 250px;
     margin-right:250px;
 

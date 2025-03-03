@@ -27,9 +27,10 @@ const Dashboard = () => {
         <Container2>
         
         <Right_side_div>
-          <Headeraboutcont>Type what item you are looking for </Headeraboutcont>
-          <Headersmall> In order to find a proper recommendation type, what you are looking for in a sentence
-            For example a good quality grill.
+          <Headeraboutcont>Write a query</Headeraboutcont>
+          <Headersmall> In order to get the best recommendation possible, 
+            we suggest writing something specific like,
+           Whats the best grill.
           </Headersmall>
         </Right_side_div>
         <Headerabout>
@@ -45,9 +46,10 @@ const Dashboard = () => {
           </Headerabout>
 
         <Right_side_div>
-        <Headeraboutcont> Searching </Headeraboutcont>
-        <Headersmall> We search across many different discussions seeing, what people are saying
-          about the item you are looking for 
+        <Headeraboutcont> We Search </Headeraboutcont>
+        <Headersmall> We listen in on 
+          many different discussions people are having about the product you're looking for
+      
         </Headersmall>
         </Right_side_div>
 
@@ -56,8 +58,8 @@ const Dashboard = () => {
         <Container2>
         
         <Right_side_div>
-          <Headeraboutcont>Filter </Headeraboutcont>
-          <Headersmall> We go through what people are saying, taking note of what products people say are the best
+          <Headeraboutcont>We Filter </Headeraboutcont>
+          <Headersmall> We have a discussion evaluating what people have said.
           </Headersmall>
         </Right_side_div>
         <Headerabout>
@@ -73,8 +75,8 @@ const Dashboard = () => {
           </Headerabout>
 
         <Right_side_div>
-        <Headeraboutcont> To you </Headeraboutcont>
-        <Headersmall> We present you with a pretty good recommendation based on what people are saying
+        <Headeraboutcont> We Present </Headeraboutcont>
+        <Headersmall> After a long discussion, we give you our best recommendation based on what people said.
         </Headersmall>
         </Right_side_div>
 
