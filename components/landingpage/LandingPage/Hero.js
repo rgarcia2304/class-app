@@ -12,8 +12,7 @@ const item_list = [
 const Hero = () => {
   const [currentWord, setCurrentWord] = useState(item_list[0]);
   const [chatResult, setChatResult] = useState(null);
-
-  // Cycle through the words in the item list
+  
   const cycleWords = async () => {
     while (true) {
       await new Promise((resolve) => setTimeout(resolve, 4000));
@@ -25,7 +24,6 @@ const Hero = () => {
     }
   };
 
-  // Start the cycle once (using useEffect is more appropriate, but we'll use this simple one for now)
   useState(() => {
     cycleWords();
   });

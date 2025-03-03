@@ -75,7 +75,6 @@ const Header1 = styled.h1`
     font-size: 140px;
     left: 20%;
     top: 10%;
-    opacity:75%;
 
 `;
 const Header2 = styled.h1`
@@ -85,7 +84,6 @@ const Header2 = styled.h1`
     font-size: 140px;
     left: 40%;
     top: 30%;
-    opacity:75%;
 
 `;
 const Header5 = styled.h1`
