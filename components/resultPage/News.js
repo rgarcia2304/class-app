@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-// Sample Articles Data
-const sampleArticles = [
+const newsArticles = [
   {
     title: "New York Times",
     description: "Want to Shop More Sustainably? These 6 Tips Will Help.",
@@ -53,11 +52,10 @@ const sampleArticles = [
   },
 ];
 
-// Main Carousel Component
 const NewsCarousel = () => {
   const [startIndex, setStartIndex] = useState(0);
-  const articles = sampleArticles; // Using our sample articles
-  const articlesPerPage = 4;
+  const articles = newsArticles;
+  const articlesPerPage = 3;
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
   // Auto slide every 5 seconds
@@ -70,17 +68,6 @@ const NewsCarousel = () => {
     return () => clearInterval(intervalId);
   }, [articles.length]);
 
-  const nextSlide = () => {
-    setStartIndex((prevIndex) =>
-      prevIndex + articlesPerPage >= articles.length ? 0 : prevIndex + articlesPerPage
-    );
-  };
-
-  const prevSlide = () => {
-    setStartIndex((prevIndex) =>
-      prevIndex - articlesPerPage < 0 ? articles.length - articlesPerPage : prevIndex - articlesPerPage
-    );
-  };
 
   return (
     <CarouselContainer>
@@ -95,15 +82,6 @@ const NewsCarousel = () => {
           </ArticleLink>
         ))}
       </ArticlesContainer>
-
-      <ArrowContainer>
-        <ArrowButton onClick={prevSlide} disabled={articles.length <= articlesPerPage}>
-          ❮
-        </ArrowButton>
-        <ArrowButton onClick={nextSlide} disabled={articles.length <= articlesPerPage}>
-          ❯
-        </ArrowButton>
-      </ArrowContainer>
 
       <DotsContainer>
         {Array.from({ length: totalPages }).map((_, index) => (

@@ -5,6 +5,7 @@ import SignUpButton from './SignUpButton';
 import Link from 'next/link';
 import { useStateContext } from '@/context/StateContext';
 import LogOut from './Logout';
+import Home from './Home';
 
 const LandingBar = () => {
   const { user } = useStateContext()
@@ -13,12 +14,14 @@ const LandingBar = () => {
       {/* <Logo onClick={() => logOut(setUser)} href="/">Perreno</Logo> */}
       <Logo href="/">Perreno </Logo>
       <Right_Items>
-         <About href="/about">About</About>
-         <Contact  href="/contact"> Contact</Contact>
-         
-         {user ? <LogOut></LogOut> : 
+   
+         {user ? <><Home></Home> <About href="/about">About</About>
+          <Contact  href="/contact"> Contact</Contact><LogOut></LogOut>  </>: <>
+          <About href="/about">About</About>
+          <Contact  href="/contact"> Contact</Contact>
          <Buttons>
-          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
+          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>
+          </>}
       </Right_Items>
     </Nav>
   );
@@ -63,6 +66,7 @@ const Buttons = styled.div`
   justify-content: space-between;
 `;
 const Nav = styled.nav`
+    margin-top:10px;
     display:flex;
     justify-content: space-between;
     align-items: center;

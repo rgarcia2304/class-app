@@ -16,13 +16,15 @@ const Navbar = () => {
     <Nav>
       <Logo href="/">Perreno </Logo>
       <Right_Items>
-        <Home></Home>
-        <About href="/about">About</About>
-        <Contact  href="/contact"> Contact</Contact>
-         
-         {user ?<><ShoppingCart></ShoppingCart><LogOut></LogOut></>  : 
-         <Buttons>
-          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons>}
+      {user ? <> 
+          <About href="/about">About</About>
+          <Contact href="/contact"> Contact</Contact>
+         <Home></Home><ShoppingCart></ShoppingCart> <LogOut></LogOut> </>: 
+        <>
+          <About href="/about">About</About>
+          <Contact href="/contact"> Contact</Contact>
+          <Buttons>
+          <LoginButton></LoginButton><SignUpButton></SignUpButton> </Buttons> </>}
 
       </Right_Items>
     </Nav>
