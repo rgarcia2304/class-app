@@ -20,8 +20,8 @@ const Dashboard = () => {
 
   return (
     <>
-        <Navbar></Navbar>;
-        <Hero> </Hero>;
+        <Navbar></Navbar>
+        <Hero> </Hero>
         <Header1> How it works</Header1>
 
         <Container2>

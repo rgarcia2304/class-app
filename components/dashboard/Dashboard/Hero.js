@@ -25,7 +25,7 @@ const Hero = () => {
         <Header4>Sustainably</Header4>
         <SearchDiv> <SearchBar onSearch={handleSearch} /></SearchDiv>
         <Image src="/images/forest.gif" alt="hello" />
-        
+
       </Container>
     </Section>
   );

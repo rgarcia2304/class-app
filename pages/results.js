@@ -182,8 +182,8 @@ const Alert= styled.h1`
 const ButtonsContainer= styled.div`
   display:flex;
   justify-content:space-between;
-  padding-right:28%;
-  padding-left:28%;
+  padding-right:30%;
+  padding-left:30%;
   margin-bottom:20px;
 `
 const ProductTitle = styled.h2`
@@ -208,6 +208,7 @@ const ProductReason = styled.p`
 const WishlistContainer= styled.div`
   display:flex;
   justify-content:center;
+  margin-top:50px;
   width:100%;
 `
 const WishlistButton = styled.button`
@@ -224,6 +225,7 @@ const WishlistButton = styled.button`
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  width:70%;
   &:hover {
     background-color: black; // Adjust hover effect as needed
   }
