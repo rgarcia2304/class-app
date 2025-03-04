@@ -1,14 +1,13 @@
 import React from 'react';
 import Link  from 'next/link';
-import { CiLinkedin } from "react-icons/ci";
+import { FaGithub } from "react-icons/fa";
 import styled from 'styled-components';
 
-const LinkedInIcon = () => {
+const Github = () => {
   return (
-    <Square href="https://www.linkedin.com/in/rodrigo-garcia-84b004256/" target="_blank" rel="noopener noreferrer">
-    <CiLinkedin />
+    <Square href="https://www.github.com/rgarcia2304">
+      <FaGithub />
     </Square>
-
   );
 };
 
@@ -29,10 +28,8 @@ const Square = styled(Link)`
   }
 
   &:hover {
-      &:hover {
     background-color: black; // Adjust hover effect as needed
-  }
   }
 `;
 
-export default LinkedInIcon;
+export default Github;

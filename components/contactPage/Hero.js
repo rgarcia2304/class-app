@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState,useEffect } from 'react';
 import LinkedInIcon from './LinkedIn';
+import Github from './Github';
 
 const Hero = () => {
   return (
@@ -15,8 +16,11 @@ const Hero = () => {
       <Image2 src = "/images/ca.jpg"/>
       </ImgContainer>
         <Container2>
-        <Headeraboutcont> Email: Rgarcia22141@gmail.com</Headeraboutcont>
-        <LinkedInIcon></LinkedInIcon>
+           
+        <Headeraboutcont> Email: rgarcia22141@gmail.com</Headeraboutcont>
+        <ContainerSocials><LinkedInIcon></LinkedInIcon>
+        <Github></Github></ContainerSocials>
+        
         </Container2>
     </Section>
   );
@@ -26,9 +30,6 @@ const Section = styled.section`
 width: 100%;
 `;
 
-const Space = styled.br`
-    margin-top:20px;
-`;
 const Container = styled.div`
     display:flex;
     flex-direction: column;
@@ -36,8 +37,17 @@ const Container = styled.div`
     align-items:center;
     margin-top:50px;
 `;
+const ContainerSocials = styled.div`
+    display:flex;
+    margin-top:10px;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    width:8%;
+`;
 const Container2 = styled.div`
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     margin-top:25px;

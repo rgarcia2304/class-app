@@ -25,7 +25,6 @@ const Hero = () => {
         <Header4>Sustainably</Header4>
         <SearchDiv> <SearchBar onSearch={handleSearch} /></SearchDiv>
         <Image src="/images/forest.gif" alt="hello" />
-
       </Container>
     </Section>
   );
@@ -42,6 +41,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top:0px;
+  margin-bottom:20px;
 `;
 
 const Header1 = styled.h1`
