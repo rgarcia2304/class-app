@@ -238,7 +238,6 @@ const Image = styled.img`
 `;
 
 const NewsText = styled.div`
-  margin-top: 100px;
   font-family:sans-serif;
   display:flex;
   justify-content:center;
