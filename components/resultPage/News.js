@@ -151,28 +151,6 @@ const Description = styled.p`
   color: #555;
 `;
 
-const ArrowButton = styled.button`
-  cursor: pointer;
-  padding: 12px;
-  font-size: 22px;
-  border: none;
-  background-color: #008000;
-  color: #fff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
-  margin: 0 10px;
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`;
 
 const DotsContainer = styled.div`
   display: flex;
