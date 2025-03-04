@@ -12,7 +12,7 @@ import SignUpButton from './SignUpButton';
 const Navbar = () => {
   return (
     <Nav>
-      <Logo href="/">Perreno </Logo>
+      <Logo href="/">Eterna </Logo>
       <Right_Items>
         <Home></Home>
         <About href="/about">About</About>

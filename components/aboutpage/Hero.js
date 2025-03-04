@@ -17,8 +17,8 @@ const Hero = () => {
             </Header3>
         </Container>
         <Container2>
-        <Headerabout>About Perreno</Headerabout>
-        <Headeraboutcont> Here at Perrano we are commited to giving you the best product recommendations on pretty much everything.
+        <Headerabout>About Eterna</Headerabout>
+        <Headeraboutcont> Here at Eterna we are commited to giving you the best product recommendations on pretty much everything.
             We source our recommendations based on what real people think.
             <Space> 
             </Space>
@@ -31,7 +31,7 @@ const Hero = () => {
              Now why are we doing this?
             We like many people are tired of buying things that break right away. 
             When found it's better not to blind buy anymore. 
-            Using Perreno you can save your wallet and the planet in the long run. 
+            Using Eterna you can save your wallet and the planet in the long run. 
             All this is accomplished one recommendation at a time.
             <Space> 
             </Space>

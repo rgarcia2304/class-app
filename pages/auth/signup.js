@@ -47,7 +47,7 @@ const Signup = () => {
         </Credential>
         
         <MainButton onClick={onSubmit}>Submit</MainButton>
-        <UserAgreementText>
+        {/* <UserAgreementText>
           By signing in, you automatically agree to our{' '}
           <UserAgreementSpan href="/legal/terms-of-use" rel="noopener noreferrer" target="_blank">
             Terms of Use
@@ -56,7 +56,7 @@ const Signup = () => {
           <UserAgreementSpan href="/legal/privacy-policy" rel="noopener noreferrer" target="_blank">
             Privacy Policy.
           </UserAgreementSpan>
-        </UserAgreementText>
+        </UserAgreementText> */}
       </Section>
       </Outline>
       

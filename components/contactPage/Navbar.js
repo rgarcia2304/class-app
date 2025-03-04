@@ -14,7 +14,7 @@ const Navbar = () => {
   const { user } = useStateContext()
   return (
     <Nav>
-      <Logo href="/">Perreno </Logo>
+      <Logo href="/">Eterna </Logo>
       <Right_Items>
       {user ? <> 
           <Home></Home>

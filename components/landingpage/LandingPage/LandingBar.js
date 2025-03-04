@@ -12,7 +12,7 @@ const LandingBar = () => {
   return (
     <Nav>
       {/* <Logo onClick={() => logOut(setUser)} href="/">Perreno</Logo> */}
-      <Logo href="/">Perreno </Logo>
+      <Logo href="/">Eterna </Logo>
       <Right_Items>
    
          {user ? <><Home></Home> <About href="/about">About</About>
