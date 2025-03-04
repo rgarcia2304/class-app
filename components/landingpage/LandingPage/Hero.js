@@ -45,7 +45,6 @@ const Hero = () => {
 
 const Section = styled.section`
   width: 100%;
-  height: 110vh;
 `;
 
 const Container = styled.div`

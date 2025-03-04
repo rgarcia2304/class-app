@@ -39,7 +39,7 @@ const Signup = () => {
     <>
       <LandingBar />
       <Outline>
-      <Header>Join Perreno Today</Header>
+      <Header>Join Eterna Today</Header>
       <Section>
         <Credential>
         <InputTitle>Email</InputTitle>
