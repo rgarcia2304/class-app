@@ -13,10 +13,12 @@ import { auth } from "@/backend/Firebase"
 import NewsCarousel from "@/components/resultPage/News";
 
 const ResultsPage = () => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { data } = router.query;
   const [recommendation, setRecommendation] = useState(null);
   const { user } = useStateContext();
+  
     useEffect(() => {
       //still thinks user is undefined 
       if(user===null){
@@ -76,6 +78,12 @@ const ResultsPage = () => {
         id: doc.id,
       }));
       setWishList(filteredData);
+      setLoading(true);
+
+      setTimeout(()=> {
+        setLoading(false);
+
+      },2000);
     } catch (err) {
       console.error(err);
     }
@@ -122,12 +130,27 @@ const ResultsPage = () => {
         <ProductTitle>{recommendation.product}</ProductTitle>
         <ProductReason>{recommendation.reason}</ProductReason>
 
-        <ButtonsContainer>
-          <NewButton href={recommendation.link_new}>Buy New</NewButton>
-          <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
-        </ButtonsContainer>
+        {recommendation.isProduct !== "no" && (
+          <ButtonsContainer>
+            <NewButton href={recommendation.link_new}>Buy New</NewButton>
+            <UsedButton href={recommendation.link_used}>Buy Used</UsedButton>
+          </ButtonsContainer>
+          
+        )}
+
+{recommendation.isProduct !== "no" && (
+          <>
+
+                <WishlistContainer> <WishlistButton onClick={onSubmitWishlist}> Add item to wishlist</WishlistButton> </WishlistContainer> 
+          </>
+          
+        )}
+
+      
+        {loading && <Alert>Item added to wishlist</Alert>}
+
     </ResultsContainer>
-    <WishlistContainer> <WishlistButton onClick={onSubmitWishlist}> Add item to wishlist</WishlistButton> </WishlistContainer>
+    
     
     <NewsText> Learn More About Quality Products</NewsText>
     <NewsText>and Sustainability</NewsText>
@@ -146,6 +169,15 @@ const ResultsContainer = styled.div`
   margin: 0 auto;
   
 `;
+
+const Alert= styled.h1`
+  color: #008000;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight:600;
+  font-family: sans-serif;
+`
 
 const ButtonsContainer= styled.div`
   display:flex;
