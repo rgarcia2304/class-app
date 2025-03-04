@@ -11,6 +11,9 @@ const Hero = () => {
         <Container>
             <Header3>Get in contact with us</Header3>
         </Container>
+        <ImgContainer>
+      <Image2 src = "/images/ca.jpg"/>
+      </ImgContainer>
         <Container2>
         <Headeraboutcont> Email: Rgarcia22141@gmail.com</Headeraboutcont>
         <LinkedInIcon></LinkedInIcon>
@@ -21,7 +24,6 @@ const Hero = () => {
 
 const Section = styled.section`
 width: 100%;
-height: 150vh;
 `;
 
 const Space = styled.br`
@@ -38,7 +40,7 @@ const Container2 = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-top:250px;
+    margin-top:25px;
 `;
 const Header1 = styled.h1`
     font-family: sans-serif;
@@ -136,6 +138,20 @@ const Image = styled.img`
   height:600px;
   border-radius: 10px; /* Optional for styling */
   margin-bottom: 30px;
+`;
+
+const Image2 = styled.img`
+  margin-top: 10px;
+  width: 150px;
+  height:200px;
+  border-radius: 10px; /* Optional for styling */
+  margin-bottom: 30px;
+  
+`;
+
+const ImgContainer = styled.div`
+    display:flex;
+    justify-content:center;
 `;
 
 export default Hero;

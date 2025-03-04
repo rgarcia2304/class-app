@@ -20,6 +20,9 @@ const SigninButtons = styled(Link)`
       font-size: 16px;
       text-decoration:none;
       font-weight: 600;
+       &:hover {
+    background-color: black; // Adjust hover effect as needed
+  }
 
 `;
 

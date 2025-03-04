@@ -149,8 +149,9 @@ const ResultsContainer = styled.div`
 const ButtonsContainer= styled.div`
   display:flex;
   justify-content:space-between;
-  padding-right:32%;
-  padding-left:32%;
+  padding-right:28%;
+  padding-left:28%;
+  margin-bottom:20px;
 `
 const ProductTitle = styled.h2`
   margin-bottom: 10px;
@@ -190,6 +191,9 @@ const WishlistButton = styled.button`
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  &:hover {
+    background-color: black; // Adjust hover effect as needed
+  }
 `;
 
 const Image = styled.img`

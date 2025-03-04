@@ -41,5 +41,10 @@ const GetStartedButton = styled.div`
     align-items: center;
     font-family: sans-serif;
     margin-top: 20px;
+
+     &:hover {
+    background-color: black; // Adjust hover effect as needed
+    color:white;
+  }
 `;
 export default GetStarted

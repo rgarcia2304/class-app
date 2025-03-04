@@ -15,6 +15,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const { setUser,user } = useStateContext();
   const router = useRouter();
+  const [error, setError] = useState('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ const Signup = () => {
       router.push('/dashboard');
     } catch (error) {
       console.error(error);
+      setError(error.message);
     }
   };
 
@@ -45,6 +47,7 @@ const Signup = () => {
         <InputTitle>Password</InputTitle>
         <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </Credential>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         
         <MainButton onClick={onSubmit}>Submit</MainButton>
         {/* <UserAgreementText>
@@ -125,6 +128,13 @@ const Signup = () => {
       font-size: 14px;
       font-family: sans-serif;
       font-weight: 1000;
+    `;
+
+    const ErrorMessage = styled.p`
+      color: #008000;
+      font-size: 14px;
+      margin-top: 10px;
+      font-family: sans-serif;
     `;
     
     const MainButton = styled.button`

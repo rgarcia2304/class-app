@@ -53,33 +53,32 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 `;
 
 const Header1 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 10px;
 `;
 
 const Header2 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   margin: 10px;
 `;
 
 const Header3 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   margin: 10px 0;
 `;
 
 const Header4 = styled.h1`
   font-family: sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   margin: 10px 0;
   color: #008000;

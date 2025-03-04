@@ -26,6 +26,9 @@ const BuyNewButtons = styled(Link)`
       justify-content:center;
       align-items:center;
       margin:10px;
+       &:hover {
+    background-color: black; // Adjust hover effect as needed
+  }
 
 `;
 

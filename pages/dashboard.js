@@ -92,6 +92,7 @@ const Container2 = styled.div`
     justify-content:space-between;
     margin-left:20%;
     margin-right:20%;
+    
 `;
 const Header1 = styled.div`
     font-family: sans-serif;
@@ -100,6 +101,7 @@ const Header1 = styled.div`
     font-weight:600;
     display:flex;
     justify-content:center;
+    margin-top:40px;
     `
     ;
 

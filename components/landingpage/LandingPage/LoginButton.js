@@ -21,6 +21,11 @@ const LoginButtons = styled(Link)`
       text-decoration:none;
       font-weight: 600;
 
+       &:hover {
+    background-color: black; // Adjust hover effect as needed
+    color:white;
+  }
+
 `;
 
 export default LoginButton;

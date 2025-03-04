@@ -88,12 +88,6 @@ const Logo = styled(Link)`
     text-decoration:none;
     color:black;
 `;
-// const Logo = styled(Link)`
-//     font-size: 25px;
-//     font-weight: 1000;
-//     text-decoration:none;
-//     color:black;
-// `;
 
 
 

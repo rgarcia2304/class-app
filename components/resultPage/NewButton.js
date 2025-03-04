@@ -24,6 +24,10 @@ const StyledButton = styled.a`
   font-family:sans-serif;
   margin-left:20px;
   width:120px;
+
+   &:hover {
+    background-color: black; // Adjust hover effect as needed
+  }
 `;
 
 

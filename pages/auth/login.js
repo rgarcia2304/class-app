@@ -11,6 +11,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter()
+    const [error, setError] = useState('');
 
     const onSubmit = async (e) => {
       e.preventDefault();
@@ -24,6 +25,7 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage)
+          setError(error.message);
       });
 
 
@@ -40,7 +42,9 @@ const Login = () => {
             <InputTitle>Password</InputTitle>
             <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </Credential>
+            <ErrorMessage></ErrorMessage>
             <MainButton onClick={onSubmit}>Submit</MainButton>
+            
             {/* <UserAgreementText>By signing in, you automatically agree to our <UserAgreementSpan href='/legal/terms-of-use' rel="noopener noreferrer" target="_blank"> Terms of Use</UserAgreementSpan> and <UserAgreementSpan href='/legal/privacy-policy' rel="noopener noreferrer" target="_blank">Privacy Policy.</UserAgreementSpan></UserAgreementText> */}
     
         </Section>
@@ -105,6 +109,13 @@ const Login = () => {
 
       }
     
+    `;
+
+    const ErrorMessage = styled.p`
+      color: #008000;
+      font-size: 14px;
+      margin-top: 10px;
+      font-family: sans-serif;
     `;
     
     const InputTitle = styled.label` 
