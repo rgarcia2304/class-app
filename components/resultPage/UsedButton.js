@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const UsedButton = ({ href }) => {
     return (
       <Link href={href} passHref>
-        <StyledButton>Buy New</StyledButton>
+        <StyledButton>Buy Used</StyledButton>
       </Link>
     );
   };

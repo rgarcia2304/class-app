@@ -61,10 +61,26 @@ Data: ${JSON.stringify(responseData)}
   const completion = await openai.chat.completions.create(parameters);
   const output = completion.choices[0].message.content;
   console.log(output);
-  //need to get rid of the tics for JSON
-  const myArray= output.split('```json\n')[1]?.split('\n```')[0]?.trim();
-  console.log(myArray);
-  return JSON.parse(myArray);
+  
+  //rework the Json if its in format from before
+  const regex = /```json\s*([\s\S]*?)\s*```/;
+  const match = output.match(regex);
+  
+  let jsonStr;
+  if (match && match[1]) {
+    jsonStr = match[1];
+  } else {
+    
+    //if it outputs correctly
+    jsonStr = output;
+  }
+  
+  try {
+    
+    return JSON.parse(jsonStr);
+  } catch (err) {
+    throw new Error("JSON parse error: " + err.message);
+  }
 };
 
 
