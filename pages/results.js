@@ -129,7 +129,8 @@ const ResultsPage = () => {
     </ResultsContainer>
     <WishlistContainer> <WishlistButton onClick={onSubmitWishlist}> Add item to wishlist</WishlistButton> </WishlistContainer>
     
-    <NewsText> Learn More About Sustainability</NewsText>
+    <NewsText> Learn More About Quality Products</NewsText>
+    <NewsText>and Sustainability</NewsText>
     <NewsCarousel/>
     
     

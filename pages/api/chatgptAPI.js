@@ -3,44 +3,40 @@ const openai = new OpenAI();
 
 export const suggestProductWithChatGPT = async (responseData, searchQuery) => {
   const prompt = `
-You are provided with response reddit data in JSON format for the query "${searchQuery}". 
-Each item contains a "post" (with properties like "title" and either "selftext" or "content.text") and a "comment" (with a "text" property).
+You are acting as a savvy online shopper scouring Reddit for the best product recommendations, ensuring you focus only on relevant and appropriate content. Imagine you’re reading through various posts and comments for the query "${searchQuery}" and taking detailed notes on what people say—including upvotes, common opinions, and overall sentiment—while deliberately filtering out any irrelevant or NSFW content. For example, ignore posts or comments that include explicit sexual content, graphic violence, or any imagery or language that is not pertinent to product reviews. Similarly, disregard irrelevant details such as off-topic memes, personal rants, or unrelated jokes.
 
-Follow these steps to properly analyze the input:
+You are provided with Reddit response data in JSON format. Each item contains a "post" (with properties such as "title" and either "selftext" or "content.text") and a "comment" (with a "text" property).
 
- Determine if the query "${searchQuery}" is intended to obtain a recommendation for a tangible, purchasable product.
-  Treat it as a product query if the text includes terms such as 
-  "recommendation", "buy", "purchase", or mentions specific product types (e.g., "oxford shoe", "smartphone", etc.). 
-  For example, a query like "high quality oxford shoe recommendation" should be recognized as product-related.
+Follow these steps to analyze the input:
 
- Case for if "${searchQuery}" is a product query:
-    Analyze the response data and select ONE product suggestion that is a physical item available for purchase.
-    Make sure the recommendation encompasses varied perspectives and do analyses based on all the different suggestions talked
-    about in the different posts not just what one user said. Also take note of the upvote count of posts etc.. MAKE AN WELL ROUNDED REVIEW
-    encompassing sentiment and tangibles.
-    Ensure the recommended product is tangible (not a service, experience, or digital item).
-    Return this EXACT following JSON object in this format:
-   
-   {
-     "product": "Product Name",
-     "reason": "A brief explanation of why this product is recommended based on the response data.",
-     "link_used": "an eBay link to the product",
-     "link_new": "a link to the company website for the product",
-     "isProduct": "yes"
-   }
+    Determine the Query Type:
+    Check if the query "${searchQuery}" is asking for a recommendation for a tangible, purchasable product. Treat it as a product query if it includes terms like "recommendation", "buy", "purchase", or mentions specific product types (e.g., "oxford shoe", "smartphone", etc.). For example, "high quality oxford shoe recommendation" should be recognized as a product query.
 
-   Case for if "${searchQuery}" does not indicate a product query (for example, if it pertains to personal traits, experiences, or non-tangible subjects):
-   - Return this EXACT following JSON object in this format:
-   {
-     "product": "N/A",
-     "reason": "This query does not pertain to a physical product available for purchase.",
-     "link_used": "",
-     "link_new": "",
-     "isProduct": "no"
-   }
+    If the Query is a Product Query:
+        Read through all the provided Reddit posts and comments, ignoring any content that is off-topic, irrelevant, or NSFW.
+        Examples:
+            Skip posts with explicit sexual language or graphic descriptions unrelated to the product.
+            Exclude comments that are mere memes, jokes, or personal rants not contributing to product evaluations.
+        Analyze the remaining data by taking into account upvote counts, recurring opinions, and overall sentiment.
+        Identify ONE physical product suggestion that stands out as the best choice based on the overall discussion.
+        Ensure the recommended product is tangible (not a service, digital item, or experience).
+        Generate two links for the recommended product:
+            A "used" link: an eBay URL where the product is available.
+            ALWAYS send and eBAY url in 
+            Always send an ebay url with the product
+            Always send an ebay url with the product 
+            Always send an an ebay url with the product
+            A "new" link: the official company website for the product.
+        Return the following JSON object exactly in this format:
 
-    SUPER IMPORTANT TO Output ONLY the JSON object exactly in the format specified above with no additional text or commentary.
+    { "product": "Product Name", "reason": "A brief explanation of why this product is recommended based on the Reddit discussions.", "link_used": "an eBay link to the product", "link_new": "a link to the company website for the product", "isProduct": "yes" }
 
+    If the Query is NOT a Product Query:
+        Return the following JSON object exactly in this format:
+
+    { "product": "N/A", "reason": "This query does not pertain to a physical product available for purchase.", "link_used": "", "link_new": "", "isProduct": "no" }
+
+IMPORTANT: Output ONLY the JSON object exactly as specified above with no additional text or commentary.
 
 Data: ${JSON.stringify(responseData)}
   `;

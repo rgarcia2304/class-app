@@ -102,9 +102,6 @@ const CarouselContainer = styled.div`
   padding: 20px 0;
 `;
 
-const ArrowContainer = styled.div`
-  display: flex;
-`;
 
 const ArticlesContainer = styled.div`
   display: flex;
