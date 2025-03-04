@@ -153,7 +153,7 @@ const ResultsPage = () => {
     
     
     <NewsText> Learn More About Quality Products</NewsText>
-    <NewsText>and Sustainability</NewsText>
+    <NewsText2>and Sustainability</NewsText2>
     <NewsCarousel/>
     
     
@@ -238,6 +238,7 @@ const Image = styled.img`
 `;
 
 const NewsText = styled.div`
+  margin-top: 100px;
   font-family:sans-serif;
   display:flex;
   justify-content:center;
@@ -245,7 +246,15 @@ const NewsText = styled.div`
   text-align:center;
   font-weight: 600;
 `
-
+const NewsText2 = styled.div`
+  margin-top: 10px;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  font-size: 40px;
+  text-align:center;
+  font-weight: 600;
+`
 const ImageContainer = styled.div`
   display:flex;
   justify-content: center;
