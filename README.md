@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Unfortunatley the Reddit API used in this project is deprecated so this project is no longer functional.
 
 ## Getting Started
 
